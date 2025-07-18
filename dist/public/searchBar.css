@@ -1,6 +1,32 @@
 #search-bar {
+    background-color: #896529;
+    box-shadow: 0 0 3px 1px #896529;
     max-width: 20%;
     padding: 6px;
     border: 1px solid #000;
-    margin: auto;
+    border-radius: 20px;
+    margin: 40px auto;
+}
+
+#search-bar__search-form {
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+#item_search_input {
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+
+#item_search_submit {
+    background-color: #B08235;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+
+#item_search_submit:hover {
+    background-color: #ab7f33;
 }
