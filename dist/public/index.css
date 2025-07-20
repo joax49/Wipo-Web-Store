@@ -14,7 +14,11 @@ body {
 
 #recent-items > div {
     height: 200px;
-    width: 120px;
+    width: 150px;
     margin: 20px auto;
-    border: 1px solid #000;
+    align-items: center;
+}
+
+#recent-items > div:hover {
+    background-color: #896529;
 }
