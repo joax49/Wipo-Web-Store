@@ -9,3 +9,13 @@ const client = new Client({
 })
 
 client.connect()
+
+await client.query(`CREATE TABLE IF NOT EXISTS products_wipo (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    price INT,
+    type VARCHAR(50),
+    section VARCHAR(50),
+    image BYTEA,
+    favorite BOOLEAN
+    )`)
