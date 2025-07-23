@@ -1,6 +1,6 @@
-import {Client} from 'pg'
+import {Pool} from 'pg'
 
-const client = new Client({
+export const pool = new Pool({
     host : '127.0.0.1',
     user : 'postgres',
     port : 5000,
@@ -8,9 +8,9 @@ const client = new Client({
     database : 'wipo_db'
 })
 
-client.connect()
+pool.connect()
 
-await client.query(`CREATE TABLE IF NOT EXISTS products_wipo (
+await pool.query(`CREATE TABLE IF NOT EXISTS products_wipo (
     id INT PRIMARY KEY,
     name VARCHAR(50),
     price INT,
