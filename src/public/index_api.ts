@@ -6,7 +6,7 @@ type FilterOptions = {
     filterFavorite: boolean
 }
 
-async function getFavoriteItems() {
+export async function getFavoriteItems(): Promise<Object[]> {
     try {
         const filter: FilterOptions = {
             filterName: false,
@@ -28,10 +28,10 @@ async function getFavoriteItems() {
 
         if (!response.ok) throw new Error("Could not fetch the resource")
 
-        const data = await response.json()
+        const data: Object[] = await response.json()
         return data
     }
     catch(error) {
-        console.log(error)
+        throw(error);
     }
 }
