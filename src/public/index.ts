@@ -5,7 +5,15 @@ async function populateBestItems() {
 
     const bestItemsBox = document.getElementById('best-items');
 
-    const favoriteItems = await getFavoriteItems();
+    const filterOptions = {
+        filterName: false,
+        filterPrice: false,
+        filterType: false,
+        filterSection: false,
+        filterFavorite: true
+    }
+
+    const favoriteItems = await getFavoriteItems(filterOptions);
     let favItem: Object;
 
     const fragment = new DocumentFragment();
@@ -35,3 +43,5 @@ async function populateBestItems() {
         bestItemsBox.append(fragment);
     }
 }
+
+document.addEventListener('DOMContentLoaded', populateBestItems)

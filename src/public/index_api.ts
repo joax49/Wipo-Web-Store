@@ -6,23 +6,22 @@ type FilterOptions = {
     filterFavorite: boolean
 }
 
-export async function getFavoriteItems(): Promise<Object[]> {
-    try {
-        const filter: FilterOptions = {
-            filterName: false,
-            filterPrice: false,
-            filterType: false,
-            filterSection: false,
-            filterFavorite: true
-        }
+type FilterParameters = {
+    searchedName?: string,
+    priceRange?: {floorPrice: Number, roofPrice: Number},
+    types?: String[],
+    sections?: String[]
+}
 
+export async function getFavoriteItems(isFiltered: FilterOptions, filters?: FilterParameters): Promise<Object[]> {
+    try {
         const response = await fetch('', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
-                filter
+                filter: [isFiltered, filters]
             })
         })
 
