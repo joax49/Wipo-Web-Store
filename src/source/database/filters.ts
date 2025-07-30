@@ -1,3 +1,4 @@
+import { QueryResult } from "pg";
 import { pool } from "./main.js";
 
 export async function favoriteProdsFilter() {
@@ -15,3 +16,12 @@ export async function priceFilter(floorPrice: Number, roofPrice: Number) {
 
     return products.rows
 }
+
+export async function typeFilter(...types:String[]) {
+    const products = await pool.query(`
+        SELECT * FROM products_wipo WHERE NOT type = $1
+        `, [types]);
+
+    return products.rows
+}
+
