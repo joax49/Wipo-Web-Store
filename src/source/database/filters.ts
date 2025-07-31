@@ -25,3 +25,11 @@ export async function typeFilter(...types:String[]) {
     return products.rows
 }
 
+export async function sectionFilter(...sections:String[]) {
+    const products = await pool.query(`
+        SELECT * FROM products_wipo WHERE NOT section = $1
+        `, [sections]);
+
+    return products.rows
+}
+
