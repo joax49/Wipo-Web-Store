@@ -47,6 +47,15 @@ export async function productsController(req: Request, res: Response) {
             allProducts = allProducts.filter(product => !filteredTypes.includes(product))
         }
 
+        if (typeof searchedSection === "string" || ((Array.isArray(searchedSection)) && searchedSection.every(item => typeof item === "string"))) {
+
+            //Getting all the items that don't match the section filter
+            const filteredSections = await sectionFilter(searchedSection);
+
+            //Keeping only the items that are not on the filteredSections array
+            allProducts = allProducts.filter(product => !filteredSections.includes(product))
+        }
+
         res.status(201).send(allProducts)
     } catch (err) {
         console.log(err)
