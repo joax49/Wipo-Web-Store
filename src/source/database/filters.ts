@@ -3,13 +3,21 @@ import { pool } from "./main.js";
 
 export async function favoriteProdsFilter() {
     const products = await pool.query(`
-        SELECT * FROM products_wipo WHERE favorite <> true LIMIT 8
+        SELECT * FROM products_wipo WHERE favorite = true LIMIT 8
         `);
 
     return products.rows
 }
 
-export async function priceFilter(floorPrice: Number, roofPrice: Number) {
+export async function nameFilter(productNames:string | string[]): Promise<string[]> {
+    const products = await pool.query(`
+        SELECT * FROM products_wipo WHERE NOT name = $1
+        `, [productNames])
+
+    return products.rows
+}
+
+export async function priceFilter(floorPrice: number, roofPrice: number) {
     const products = await pool.query(`
         SELECT * FROM products_wipo WHERE NOT (price > $1 AND price < $2)
         `, [floorPrice, roofPrice]);
@@ -17,7 +25,7 @@ export async function priceFilter(floorPrice: Number, roofPrice: Number) {
     return products.rows
 }
 
-export async function typeFilter(...types:String[]) {
+export async function typeFilter(types:string | string[]) {
     const products = await pool.query(`
         SELECT * FROM products_wipo WHERE NOT type = $1
         `, [types]);
@@ -25,11 +33,10 @@ export async function typeFilter(...types:String[]) {
     return products.rows
 }
 
-export async function sectionFilter(...sections:String[]) {
+export async function sectionFilter(sections:string | string[]) {
     const products = await pool.query(`
         SELECT * FROM products_wipo WHERE NOT section = $1
         `, [sections]);
 
     return products.rows
 }
-

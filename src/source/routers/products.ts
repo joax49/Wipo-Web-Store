@@ -5,4 +5,8 @@ export const productsRouter = express.Router()
 productsRouter.use(express.json())
 
 
-productsRouter.post('/getProducts', productsController)
+productsRouter.get('/getProducts/query', productsController) 
+
+// productsRouter.get("/", (req, res) => 
+//     res.status(201).send("hi!")
+// )

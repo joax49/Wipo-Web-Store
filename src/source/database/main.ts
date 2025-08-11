@@ -3,8 +3,8 @@ import {Pool} from 'pg'
 export const pool = new Pool({
     host : '127.0.0.1',
     user : 'postgres',
-    port : 5000,
-    password : 'tuki',
+    port : 5432,
+    password : 'Tuki4',
     database : 'wipo_db'
 })
 
