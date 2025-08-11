@@ -1,13 +1,13 @@
-import { Client } from 'pg';
-const client = new Client({
+import { Pool } from 'pg';
+export const pool = new Pool({
     host: '127.0.0.1',
     user: 'postgres',
-    port: 5000,
-    password: 'tuki',
+    port: 5432,
+    password: 'Tuki4',
     database: 'wipo_db'
 });
-client.connect();
-await client.query(`CREATE TABLE IF NOT EXISTS products_wipo (
+pool.connect();
+await pool.query(`CREATE TABLE IF NOT EXISTS products_wipo (
     id INT PRIMARY KEY,
     name VARCHAR(50),
     price INT,
