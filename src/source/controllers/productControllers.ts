@@ -26,12 +26,25 @@ export async function productsController(req: Request, res: Response) {
         }
 
         if (typeof lowPriceString === "string" && typeof highPriceString === "string") {
+
+            //Turning the query param results into numbers
             const lowPrice = Number(lowPriceString);
             const highPrice = Number(highPriceString);
 
+            //Getting all the items that are not between the lowPrice and highPrice numbers
             const filteredPrices = await priceFilter(lowPrice, highPrice);
 
+            //Keeping only the items that are not on the filteredPrices array
             allProducts = allProducts.filter(product => !filteredPrices.includes(product))
+        }
+
+        if (typeof searchedType === "string" || ((Array.isArray(searchedType)) && searchedType.every(item => typeof item === "string"))) {
+
+            //Getting all the items that don't match the type filter
+            const filteredTypes = await typeFilter(searchedType);
+
+            //Keeping only the items that are not on the filteredTypes array
+            allProducts = allProducts.filter(product => !filteredTypes.includes(product))
         }
 
         res.status(201).send(allProducts)
