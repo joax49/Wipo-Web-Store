@@ -16,6 +16,7 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products_wipo (
     price INT,
     type VARCHAR(50),
     section VARCHAR(50),
+    idByitemSection INT,
     image BYTEA,
-    favorite BOOLEAN
+    isFavorite BOOLEAN
     )`)

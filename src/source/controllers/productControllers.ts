@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
-import { getProducts} from "../database/products.js"
+import { getProducts} from "../database/getProducts.js"
 import { nameFilter, priceFilter, typeFilter, sectionFilter } from "../database/filters.js"
 
-export async function productsController(req: Request, res: Response) {
+export async function getProductsController(req: Request, res: Response) {
     try {
 
         //Getting the applied filters from the query params
@@ -57,6 +57,14 @@ export async function productsController(req: Request, res: Response) {
         }
 
         res.status(201).send(allProducts)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export async function postProductsController(req:Request, res: Response) {
+    try {
+
     } catch (err) {
         console.log(err)
     }

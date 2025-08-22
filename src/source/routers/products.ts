@@ -1,12 +1,10 @@
 import express from "express";
-import { productsController} from "../controllers/productControllers.js";
+import { getProductsController, postProductsController } from "../controllers/productControllers.js";
 
 export const productsRouter = express.Router()
 productsRouter.use(express.json())
 
 
-productsRouter.get('/getProducts/query', productsController) 
+productsRouter.get('/getProducts/query', getProductsController) 
 
-// productsRouter.get("/", (req, res) => 
-//     res.status(201).send("hi!")
-// )
+productsRouter.post('/postProducts', postProductsController)
