@@ -11,12 +11,11 @@ export const pool = new Pool({
 pool.connect()
 
 await pool.query(`CREATE TABLE IF NOT EXISTS products_wipo (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    price INT,
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    idByitemSection INT,
+    name VARCHAR(50) NOT NULL,
+    price INT NOT NULL,
     type VARCHAR(50),
     section VARCHAR(50),
-    idByitemSection INT,
-    image BYTEA,
-    isFavorite BOOLEAN
+    amount SMALLINT
     )`)

@@ -4,41 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="./styling/navBar.css">
-        <link rel="stylesheet" href="./styling/searchBar.css">
-        <link rel="stylesheet" href="./styling/index.css">
     </head>
     <body>
-        <div id="header">
-            <div id="header__nav_bar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="about.html">Contacto</a></li>
-                </ul>
-            </div>
-            <div id="header__authentication">
-                <a href="auth.html">Iniciar sesión</a>
-            </div>
-        </div>
-        <div id="search-bar">
-            <form id="search-bar__search-form">
-                <input id="item_search_input" type="text">
-                <input id="item_search_submit" type="submit">
-            </form>
-        </div>
-        <main>
-            <div id="best-items">
-                <div class="best-items__item">
-                    <h3></h3>
-                    <p></p>
-                    <div>
-                        <img src="">
-                    </div>
-                </div>
-            </div>
-        </main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        <script type="module" src="index_api.js"></script>
+            </tbody>
+        </table>
+
+        <script type="module" src="tableContent.js"></script>
     </body>
 </html>

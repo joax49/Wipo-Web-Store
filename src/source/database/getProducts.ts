@@ -15,7 +15,3 @@ export async function getProducts(): Promise<string[]> {
 
     return allProducts.rows
 }
-
-export async function insertProduct(newProduct:Product) {
-    
-}

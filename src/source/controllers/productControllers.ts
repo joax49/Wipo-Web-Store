@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { getProducts} from "../database/getProducts.js"
 import { nameFilter, priceFilter, typeFilter, sectionFilter } from "../database/filters.js"
+import { insertProduct } from "../database/addProducts.js";
 
 export async function getProductsController(req: Request, res: Response) {
     try {
@@ -64,7 +65,15 @@ export async function getProductsController(req: Request, res: Response) {
 
 export async function postProductsController(req:Request, res: Response) {
     try {
+        {
+            const {product} = req.body;
 
+            if (Array.isArray(product) && product.every(item => typeof item === "string" || typeof item === "number" )) {
+                insertProduct(product)
+            }
+
+            res.status(201).send("Product added orrectly")
+        }
     } catch (err) {
         console.log(err)
     }
