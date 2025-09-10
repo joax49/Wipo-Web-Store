@@ -66,13 +66,18 @@ export async function getProductsController(req: Request, res: Response) {
 export async function postProductsController(req:Request, res: Response) {
     try {
         {
-            const {product} = req.body;
+            const {productName, productPrice} = req.body;
 
-            if (Array.isArray(product) && product.every(item => typeof item === "string" || typeof item === "number" )) {
-                insertProduct(product)
+            console.log(typeof productPrice)
+
+            if (typeof productName === "string") {
+                if (typeof Number(productPrice) === "number") insertProduct(productName, productPrice);
+                else insertProduct(productName, null)
             }
 
-            res.status(201).send("Product added orrectly")
+            else res.status(406).send("Product must vhave a name")
+
+            res.status(201).send("Product added correctly")
         }
     } catch (err) {
         console.log(err)

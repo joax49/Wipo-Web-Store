@@ -1,9 +1,9 @@
 import { pool } from "./main.js";
-export async function insertProduct(newProduct) {
+export async function insertProduct(productName, productPrice) {
     await pool.query(`
         INSERT INTO products_wipo
         (name, price)
         VALUES ($1, $2)
-        `, [newProduct[0], newProduct[1]]);
+        `, [productName, productPrice]);
 }
 //# sourceMappingURL=addProducts.js.map
