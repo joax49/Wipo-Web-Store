@@ -1,6 +1,5 @@
 import {Pool} from 'pg'
 
-//Creating the pool
 export const pool = new Pool({
     host : '127.0.0.1',
     user : 'postgres',
@@ -9,10 +8,8 @@ export const pool = new Pool({
     database : 'wipo_db'
 })
 
-//Connecting to the pool
 pool.connect()
 
-//Creating a table for the products
 await pool.query(`CREATE TABLE IF NOT EXISTS products_wipo (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     idByitemSection INT,

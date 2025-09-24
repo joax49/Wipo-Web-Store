@@ -1,6 +1,6 @@
 import { pool } from "./main.js";
 
-//Function for adding products into the database
+
 export async function insertProduct(productName: string, productPrice: number | null) {
     await pool.query(`
         INSERT INTO products_wipo
