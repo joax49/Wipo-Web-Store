@@ -1,0 +1,39 @@
+body {
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+main {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > form, main > table {
+    margin: 12px;
+}
+
+#newProduct {
+    width: 30%;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+#newProduct > input {
+    width: 100%;
+    margin: 1px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 30%;
+    padding: 8px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #000;
+}
