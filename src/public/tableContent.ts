@@ -4,7 +4,7 @@ const tableBody = document.querySelector('tbody');
 async function fillTable() {
     
     try {
-        const response = await fetch('https://wipo.jxmtz.xyz/products/getProducts/query');
+        const response = await fetch('http://localhost:3000/products/getProducts/query');
 
         if (!response.ok) {
             throw new Error('Could not fetch resource')
@@ -25,7 +25,7 @@ async function fillTable() {
             const elementName = document.createElement('td');
             elementName.textContent = element.name;
             const elementPrice = document.createElement('td');
-            elementPrice.textContent = element.price;
+            elementPrice.textContent = "$" + element.price;
 
             row.append(elementId);
             row.append(elementName);

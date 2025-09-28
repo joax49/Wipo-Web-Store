@@ -29,13 +29,15 @@ form.addEventListener("submit", async (b) => {
     try {
         const product = {"productName": nameInput.value, "productPrice": priceInput.value};
 
-        const response = await fetch('https://wipo.jxmtz.xyz/products/postProducts',
+        const response = await fetch('http://localhost:3000/protectedProducts/postProducts',
             {
                 method: "POST",
                 body: JSON.stringify(product),
                 headers: {"Content-type" : "application/json"}
             }
         )
+
+        location.reload();
 
     } catch (e) {
         console.log(e)

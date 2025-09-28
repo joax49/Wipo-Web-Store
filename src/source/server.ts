@@ -3,6 +3,8 @@ import cors from 'cors';
 import path, {dirname} from 'path';
 import { fileURLToPath } from 'url';
 import { productsRouter } from './routers/products.js';
+import { protectedProductsRouter } from './routers/protectedProducts.js';
+import { authRouter } from './routers/authRouter.js';
 
 const app = express();
 const PORT = 3000;
@@ -13,11 +15,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(cors({
-    origin: "https://wipo.jxmtz.xyz", 
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    //credentials: true, // if using cookies/auth headers
-}));
+
+// app.use(cors({
+//     origin: "https://wipo.jxmtz.xyz", 
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     //credentials: true, // if using cookies/auth headers
+// }));
 
 //Serving the HTML file from public directory
 app.get('/', (req, res) => {
@@ -26,6 +29,8 @@ app.get('/', (req, res) => {
 
 })
 
-app.use('/products', productsRouter)
+app.use('/products', productsRouter);
+app.use('/protectedProducts', protectedProductsRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, 'localhost', () => console.log(`You are listening to port ${PORT}`));

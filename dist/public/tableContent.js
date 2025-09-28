@@ -1,7 +1,7 @@
 const tableBody = document.querySelector('tbody');
 async function fillTable() {
     try {
-        const response = await fetch('https://wipo.jxmtz.xyz/products/getProducts/query');
+        const response = await fetch('http://localhost:3000/products/getProducts/query');
         if (!response.ok) {
             throw new Error('Could not fetch resource');
         }

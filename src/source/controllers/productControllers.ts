@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import { getProducts} from "../database/getProducts.js"
 import { nameFilter, priceFilter, typeFilter, sectionFilter } from "../database/filters.js"
-import { insertProduct } from "../database/addProducts.js";
 
 export async function getProductsController(req: Request, res: Response) {
     try {
@@ -60,32 +59,5 @@ export async function getProductsController(req: Request, res: Response) {
         res.status(201).send(allProducts)
     } catch (err) {
         res.status(402).send(err)
-    }
-}
-
-export async function postProductsController(req:Request, res: Response) {
-    try {
-        {
-            //Getting the product data from the request
-            const {productName, productPrice} = req.body;
-
-            //If the product's name is a string, the code will try to turn 
-            //the product price into a number and insert it into the database
-            if (typeof productName === "string") {
-                const numberProductPrice = Number(productPrice);
-                if (typeof numberProductPrice === "number") insertProduct(productName, numberProductPrice);
-
-                //If product price cannot be converted into a number, a null
-                //value will be inserted into the database instead
-                else insertProduct(productName, null)
-            }
-
-            //If the product name is invalid, an error will be returned in the response
-            else res.status(406).send("Product must have a name")
-
-            res.status(201).send("Product added correctly")
-        }
-    } catch (err) {
-        console.log(err)
     }
 }
