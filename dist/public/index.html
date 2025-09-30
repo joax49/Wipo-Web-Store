@@ -7,12 +7,13 @@
         <title>Document</title>
     </head>
     <body>
-        <dialog>
+        <dialog open>
             <div id="modal__content">
                 <h2 id="modal__title">Inserte el código de administrador</h2>
+                <h4 id="modal__answer"></h4>
                 <form id="modal__form">
-                    <input type="text">
-                    <input type="submit">
+                    <input id="modal__password" type="text" required>
+                    <input id="modal__submit" type="submit">
                 </form>
                 <form method="dialog">
                     <button id="modal__close-button">X</button>

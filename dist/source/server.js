@@ -2,6 +2,8 @@ import express from 'express';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { productsRouter } from './routers/products.js';
+import { protectedProductsRouter } from './routers/protectedProducts.js';
+import { authRouter } from './routers/authRouter.js';
 const app = express();
 const PORT = 3000;
 // Get the file path from the URL of the current module
@@ -19,5 +21,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 app.use('/products', productsRouter);
+app.use('/protectedProducts', protectedProductsRouter);
+app.use('/auth', authRouter);
 app.listen(PORT, 'localhost', () => console.log(`You are listening to port ${PORT}`));
 //# sourceMappingURL=server.js.map

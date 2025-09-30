@@ -37,8 +37,6 @@ form.addEventListener("submit", async (b) => {
             }
         )
 
-        location.reload();
-
     } catch (e) {
         console.log(e)
     }
