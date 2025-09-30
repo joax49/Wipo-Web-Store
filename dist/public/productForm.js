@@ -2,20 +2,7 @@ const form = document.getElementById("newProduct");
 const button = document.getElementById("submitProduct");
 const nameInput = document.getElementById("productName");
 const priceInput = document.getElementById("productPrice");
-// async function sendProduct() {
-//     try {
-//         const formData = new FormData(form);
-//         console.log(formData, );
-//         const response = await fetch('http://localhost:/products/postProducts',
-//             {
-//                 method: "POST",
-//                 body: formData
-//             }
-//         )
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
+const modalWindow = document.querySelector('dialog');
 form.addEventListener("submit", async (b) => {
     b.preventDefault();
     try {
@@ -25,6 +12,9 @@ form.addEventListener("submit", async (b) => {
             body: JSON.stringify(product),
             headers: { "Content-type": "application/json" }
         });
+        if (!response.ok) {
+            modalWindow.showModal();
+        }
     }
     catch (e) {
         console.log(e);

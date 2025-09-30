@@ -4,24 +4,7 @@ const button = document.getElementById("submitProduct") as HTMLButtonElement;
 const nameInput = document.getElementById("productName") as HTMLInputElement;
 const priceInput = document.getElementById("productPrice") as HTMLInputElement;
 
-// async function sendProduct() {
-//     try {
-
-        
-//         const formData = new FormData(form);
-//         console.log(formData, );
-
-//         const response = await fetch('http://localhost:/products/postProducts',
-//             {
-//                 method: "POST",
-//                 body: formData
-//             }
-//         )
-
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
+const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
 
 form.addEventListener("submit", async (b) => {
     b.preventDefault()
@@ -36,6 +19,10 @@ form.addEventListener("submit", async (b) => {
                 headers: {"Content-type" : "application/json"}
             }
         )
+
+        if(!response.ok) {
+            modalWindow.showModal()
+        }
 
     } catch (e) {
         console.log(e)
