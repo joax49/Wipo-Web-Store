@@ -1,10 +1,11 @@
 import { pool } from "./main.js";
 
 //Function for adding products into the database
-export async function insertProduct(productName: string, productPrice: number | null) {
+export async function insertProduct(productName: string, productPrice: number, productType: (string | null),
+productSubtype: (string | null), productAmount: number, productImagePath: (string | null)) {
     await pool.query(`
-        INSERT INTO products_wipo
-        (name, price)
-        VALUES ($1, $2)
-        `, [productName, productPrice])
+        INSERT INTO products
+        (name, price, type, subtype, amount, imagePath)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        `, [productName, productPrice, productPrice, productSubtype, productAmount, productImagePath])
 }
