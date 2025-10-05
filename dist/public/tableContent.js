@@ -21,10 +21,22 @@ async function fillTable() {
             elementName.textContent = element.name;
             const elementPrice = document.createElement('td');
             elementPrice.textContent = "$" + element.price;
+            const elementType = document.createElement('td');
+            elementType.textContent = element.type;
+            const elementSubtype = document.createElement('td');
+            elementSubtype.textContent = element.subtype;
+            const elementAmount = document.createElement('td');
+            elementAmount.textContent = element.amount;
+            const elementImage = document.createElement('td');
+            elementImage.textContent = element.imagePath;
             //Inserting columns into the row
             row.append(elementId);
             row.append(elementName);
             row.append(elementPrice);
+            row.append(elementType);
+            row.append(elementSubtype);
+            row.append(elementAmount);
+            row.append(elementImage);
             //Inserting the rows into the fragment
             fragment.append(row);
         }
