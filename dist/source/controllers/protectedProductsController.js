@@ -1,4 +1,5 @@
 import { insertProduct } from "../database/addProducts.js";
+import { reduceAmount } from "../database/editProducts.js";
 export async function postProductsController(req, res) {
     try {
         {
@@ -23,6 +24,25 @@ export async function postProductsController(req, res) {
                 res.status(406).send("Product must have a name");
             res.status(201).send("Product added correctly");
         }
+    }
+    catch (err) {
+        res.status(401).send({ err });
+    }
+}
+export async function editProductsController(req, res) {
+    try {
+    }
+    catch (err) {
+        res.status(401).send({ err });
+    }
+}
+export async function soldProductsController(req, res) {
+    try {
+        const { products } = req.body;
+        if (Array.isArray(products) && products.every(product => typeof product === "string")) {
+            reduceAmount(products);
+        }
+        res.status(201).send("Items edited correctly");
     }
     catch (err) {
         res.status(401).send({ err });

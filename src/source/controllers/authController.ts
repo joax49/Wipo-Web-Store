@@ -9,9 +9,6 @@ export async function authController(req: Request, res: Response) {
 
         if (password === process.env.ADMIN_KEY && typeof process.env.JWT_KEY === "string") {
 
-            console.log(password)
-            console.log(typeof password)
-            console.log(process.env.ADMIN_KEY)
             const token = jwt.sign({admin: true}, process.env.JWT_KEY, {
                 expiresIn: "6h"
             })

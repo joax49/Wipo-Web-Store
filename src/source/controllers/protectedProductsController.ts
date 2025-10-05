@@ -1,7 +1,8 @@
 import { Request, Response } from "express"
 import { insertProduct } from "../database/addProducts.js";
+import { reduceAmount } from "../database/editProducts.js";
 
-export async function postProductsController(req:Request, res: Response) {
+export async function postProductsController(req: Request, res: Response) {
     try {
         {
 
@@ -28,6 +29,28 @@ export async function postProductsController(req:Request, res: Response) {
 
             res.status(201).send("Product added correctly")
         }
+    } catch (err) {
+        res.status(401).send({err});
+    }
+}
+
+export async function editProductsController(req: Request, res: Response) {
+    try {
+        
+    } catch (err) {
+        res.status(401).send({err});
+    }
+}
+
+export async function soldProductsController(req: Request, res: Response) {
+    try {
+        const {products} = req.body;
+
+        if(Array.isArray(products) && products.every(product => typeof product === "string")) {
+            reduceAmount(products);
+        }
+
+        res.status(201).send("Items edited correctly")
     } catch (err) {
         res.status(401).send({err});
     }
