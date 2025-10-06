@@ -7,26 +7,25 @@ export async function postProductsController(req, res) {
                 throw new Error("Invalid access: Must provide token");
             }
             //Getting the product data from the request
-            const { productName, productPrice } = req.body;
-            //If the product's name is a string, the code will try to turn 
-            //the product price into a number and insert it into the database
-            if (typeof productName === "string") {
-                const numberProductPrice = Number(productPrice);
-                if (typeof numberProductPrice === "number")
-                    insertProduct(productName, numberProductPrice);
-                //If product price cannot be converted into a number, a null
-                //value will be inserted into the database instead
-                else
-                    insertProduct(productName, null);
-            }
+            const { productName, productPrice, productType, productSubtype, productAmount } = req.body;
+            const image = req.file;
             //If the product name is invalid, an error will be returned in the response
-            else
-                res.status(406).send("Product must have a name");
+            if (typeof productName !== "string") {
+                return res.status(406).send("Product must have a name");
+            }
+            //Converting price and amount to numbers
+            const productPriceAsNumber = Number(productPrice);
+            const productAmountAsNumber = Number(productAmount);
+            //If the converted price or amount aren't numbers, the code will return an error
+            if (isNaN(productPriceAsNumber) || isNaN(productAmountAsNumber)) {
+                throw new Error("The product's price and amount must be a number");
+            }
+            insertProduct(productName, productPrice, productType, productSubtype, productAmount, image ? image.originalname : null);
             res.status(201).send("Product added correctly");
         }
     }
     catch (err) {
-        res.status(401).send({ err });
+        res.status(401).send(err);
     }
 }
 export async function editProductsController(req, res) {
@@ -36,6 +35,7 @@ export async function editProductsController(req, res) {
         res.status(401).send({ err });
     }
 }
+//Controller for reducing the "amount" in the sold products
 export async function soldProductsController(req, res) {
     try {
         const { products } = req.body;

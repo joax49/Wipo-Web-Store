@@ -22,6 +22,3 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products (
     amount SMALLINT NOT NULL,
     imagePath VARCHAR(100)
     )`)
-
-//REMOVE: idByitemSecttion
-//ADD: imagePath

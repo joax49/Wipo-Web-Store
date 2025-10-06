@@ -7,5 +7,5 @@ productSubtype: (string | null), productAmount: number, productImagePath: (strin
         INSERT INTO products
         (name, price, type, subtype, amount, imagePath)
         VALUES ($1, $2, $3, $4, $5, $6)
-        `, [productName, productPrice, productPrice, productSubtype, productAmount, productImagePath])
+        `, [productName, productPrice, productType, productSubtype, productAmount, productImagePath])
 }

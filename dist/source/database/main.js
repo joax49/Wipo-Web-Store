@@ -13,12 +13,10 @@ pool.connect();
 await pool.query(`CREATE TABLE IF NOT EXISTS products (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    price INT,
+    price INT NOT NULL,
     type VARCHAR(50),
     subtype VARCHAR(50),
-    amount SMALLINT,
+    amount SMALLINT NOT NULL,
     imagePath VARCHAR(100)
     )`);
-//REMOVE: idByitemSecttion
-//ADD: imagePath
 //# sourceMappingURL=main.js.map

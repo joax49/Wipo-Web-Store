@@ -28,7 +28,7 @@ async function fillTable() {
             const elementAmount = document.createElement('td');
             elementAmount.textContent = element.amount;
             const elementImage = document.createElement('td');
-            elementImage.textContent = element.imagePath;
+            elementImage.textContent = element.imagepath;
             //Inserting columns into the row
             row.append(elementId);
             row.append(elementName);

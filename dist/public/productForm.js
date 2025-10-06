@@ -2,15 +2,37 @@ const form = document.getElementById("newProduct");
 const button = document.getElementById("submitProduct");
 const nameInput = document.getElementById("productName");
 const priceInput = document.getElementById("productPrice");
+const typeInput = document.getElementById("productType");
+const subtypeInput = document.getElementById("productSubtype");
+const amountInput = document.getElementById("productAmount");
+const fileInput = document.getElementById("productFile");
 const modalWindow = document.querySelector('dialog');
 form.addEventListener("submit", async (b) => {
     b.preventDefault();
     try {
-        const product = { "productName": nameInput.value, "productPrice": priceInput.value };
+        const formData = new FormData(form);
+        // let providedImage: File | string;
+        // if(fileInput.files) {
+        //     providedImage = fileInput.files[0]
+        // }
+        // else {
+        //     providedImage = "No image provided"
+        // }
+        // formData.append("productName", nameInput.value);
+        // formData.append("productPrice", priceInput.value);
+        // formData.append("productType", typeInput.value);
+        // formData.append("productSubtype", subtypeInput.value);
+        // formData.append("productAmount", amountInput.value);
+        // formData.append("image", providedImage);
+        // let product = {
+        //     "productName": nameInput.value, "productPrice": priceInput.value,
+        //     "productType": typeInput.value, "productSubtype": subtypeInput.value,
+        //     "productAmount": amountInput.value, 'image': providedImage
+        // }
         const response = await fetch('http://localhost:3000/protectedProducts/postProducts', {
             method: "POST",
-            body: JSON.stringify(product),
-            headers: { "Content-type": "application/json" }
+            body: formData,
+            credentials: "include"
         });
         if (!response.ok) {
             modalWindow.showModal();
