@@ -34,6 +34,8 @@ const upload = multer({
     storage
 });
 
+app.use('/images', express.static(uploadsLocation));
+
 //Standard middleware
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
