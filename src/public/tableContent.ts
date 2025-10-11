@@ -1,11 +1,26 @@
 //Selecting the table
 const tableBody = document.querySelector('tbody');
 
+//Type alias for the item filter
+type ItemFilter = {
+    name: string | null;
+    floorPrice: number | null;
+    roofPrice: number | null;
+    type: string | null;
+    subtype: string | null;
+}
+
 //Function for filling the table with the products
-async function fillTable() {
+async function fillTable(page: number, filter: ItemFilter) {
     
+    let url = "http://localhost:3000/products/getProducts/query";
+
+    url += "/" + page;
+    console.log(url);
+
     try {
-        const response = await fetch('http://localhost:3000/products/getProducts/query');
+        const response = await fetch(url);
+        console.log(response)
 
         if (!response.ok) {
             throw new Error("Could not fetch resource")
@@ -63,6 +78,13 @@ async function fillTable() {
 
 }
 
-//Event for filling the table once the DOM is loaded
-document.addEventListener('DOMContentLoaded', ()=>fillTable())
+const loadingFilter = {
+    name: null,
+    floorPrice: null,
+    roofPrice: null,
+    type: null,
+    subtype: null,
+}
 
+//Event for filling the table once the DOM is loaded
+document.addEventListener('DOMContentLoaded', ()=>fillTable(0, loadingFilter))

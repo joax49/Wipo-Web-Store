@@ -1,14 +1,6 @@
 import { QueryResult } from "pg";
 import { pool } from "./main.js";
 
-// export async function favoriteProdsFilter() {
-//     const products = await pool.query(`
-//         SELECT * FROM products_wipo WHERE favorite = true LIMIT 8
-//         `);
-
-//     return products.rows
-// }
-
 //A function for filtering products by name
 export async function nameFilter(productNames:string | string[]): Promise<string[]> {
     const products = await pool.query(`

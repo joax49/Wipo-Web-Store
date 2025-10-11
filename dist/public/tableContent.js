@@ -1,9 +1,13 @@
 //Selecting the table
 const tableBody = document.querySelector('tbody');
 //Function for filling the table with the products
-async function fillTable() {
+async function fillTable(page, filter) {
+    let url = "http://localhost:3000/products/getProducts/query";
+    url += "/" + page;
+    console.log(url);
     try {
-        const response = await fetch('http://localhost:3000/products/getProducts/query');
+        const response = await fetch(url);
+        console.log(response);
         if (!response.ok) {
             throw new Error("Could not fetch resource");
         }
@@ -28,7 +32,7 @@ async function fillTable() {
             const elementAmount = document.createElement('td');
             elementAmount.textContent = element.amount;
             const elementImage = document.createElement('td');
-            elementImage.innerHTML = `<img src="http://localhost:3000/images/${element.imagepath}">`;
+            elementImage.innerHTML = `<img src="http://localhost:3000/images/${element.imagepath}" alt="No image available">`;
             ;
             //Inserting columns into the row
             row.append(elementId);
@@ -50,7 +54,14 @@ async function fillTable() {
         console.log(error);
     }
 }
+const loadingFilter = {
+    name: null,
+    floorPrice: null,
+    roofPrice: null,
+    type: null,
+    subtype: null,
+};
 //Event for filling the table once the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => fillTable());
+document.addEventListener('DOMContentLoaded', () => fillTable(0, loadingFilter));
 export {};
 //# sourceMappingURL=tableContent.js.map
