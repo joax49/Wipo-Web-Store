@@ -1,5 +1,8 @@
-//Selecting the table
+//Selecting the HTML elements
 const tableBody = document.querySelector('tbody');
+const previousPageButton = document.getElementById("page-selector__previous-page");
+const nextPageButton = document.getElementById("page-selector__next-page");
+const displayPage = document.getElementById("page-selector__page-indicator");
 //Function for filling the table with the products
 async function fillTable(page, filter) {
     let url = "http://localhost:3000/products/getProducts/query";
@@ -61,7 +64,20 @@ const loadingFilter = {
     type: null,
     subtype: null,
 };
+async function changePage(changeAmount) {
+    const currentPage = displayPage.innerHTML;
+    console.log(currentPage);
+    let currentPageNumber = Number(currentPage) + changeAmount;
+    console.log(currentPageNumber);
+    tableBody.innerHTML = "";
+    if (currentPageNumber <= 0)
+        throw new Error("The page must be at least 1");
+    await fillTable(currentPageNumber, loadingFilter);
+    displayPage.innerHTML = String(currentPageNumber);
+}
 //Event for filling the table once the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => fillTable(0, loadingFilter));
+document.addEventListener('DOMContentLoaded', () => fillTable(1, loadingFilter));
+previousPageButton.addEventListener('click', () => changePage(-1));
+nextPageButton.addEventListener('click', () => changePage(1));
 export {};
 //# sourceMappingURL=tableContent.js.map

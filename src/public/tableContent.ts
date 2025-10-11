@@ -1,5 +1,8 @@
-//Selecting the table
-const tableBody = document.querySelector('tbody');
+//Selecting the HTML elements
+const tableBody = document.querySelector('tbody') as HTMLTableSectionElement;
+const previousPageButton = document.getElementById("page-selector__previous-page") as HTMLButtonElement;
+const nextPageButton = document.getElementById("page-selector__next-page") as HTMLButtonElement;
+const displayPage = document.getElementById("page-selector__page-indicator") as HTMLElement;
 
 //Type alias for the item filter
 type ItemFilter = {
@@ -86,5 +89,21 @@ const loadingFilter = {
     subtype: null,
 }
 
+async function changePage(changeAmount: number) {
+    const currentPage = displayPage.innerHTML;
+    console.log(currentPage)
+    let currentPageNumber = Number(currentPage) + changeAmount;
+    console.log(currentPageNumber)
+
+    tableBody.innerHTML = "";
+
+    if(currentPageNumber <= 0) throw new Error("The page must be at least 1");
+
+    await fillTable(currentPageNumber, loadingFilter);
+    displayPage.innerHTML = String(currentPageNumber);
+}
+
 //Event for filling the table once the DOM is loaded
-document.addEventListener('DOMContentLoaded', ()=>fillTable(0, loadingFilter))
+document.addEventListener('DOMContentLoaded', ()=>fillTable(1, loadingFilter))
+previousPageButton.addEventListener('click', ()=>changePage(-1))
+nextPageButton.addEventListener('click', ()=>changePage(1))

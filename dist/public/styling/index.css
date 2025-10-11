@@ -76,3 +76,16 @@ dialog {
     top: 0;
     right: 0;
 }
+
+#page-selector {
+    width: 120px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+#page-selector > button, #page-selector > div {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}

@@ -6,7 +6,7 @@ export async function getProductsController(req, res) {
         const { page } = req.params;
         const pageNumber = Number(page);
         //Getting an array with all the products from the DB
-        let allProducts = await getProducts(pageNumber * 20);
+        let allProducts = await getProducts((pageNumber - 1) * 20);
         console.log(allProducts);
         if (!allProducts)
             return res.status(404).send("The application could not get the products from the DB");
