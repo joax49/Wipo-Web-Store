@@ -1,0 +1,26 @@
+#nav {
+    background-color: #ccc;
+    height: 30px;
+}
+
+#nav__ul {
+    margin: 0;
+    height: 100%;
+    display: flex;
+}
+
+.nav__item {
+    text-align: center;
+    padding: 6px;
+    width: 6vw;
+    list-style: none;
+}
+
+.nav__item:hover {
+    background-color: #aaa;
+}
+
+.nav__link {
+    color: #d44;
+    text-decoration: none;
+}

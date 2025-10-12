@@ -42,7 +42,10 @@ app.use(express.urlencoded({ "limit": "50mb", "extended": true }));
 // }));
 //Serving the HTML file from public directory
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
+app.get('/productEditor', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'productEditor.html'));
 });
 app.post('/protectedProducts/postProducts', upload.single('image'), postProductsController);
 app.use('/products', productsRouter);

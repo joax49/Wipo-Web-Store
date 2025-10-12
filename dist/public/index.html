@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styling/index.css">
+        <link rel="stylesheet" href="styling/navBar.css">
+        <link rel="stylesheet" href="styling/modalWindow.css">
+        <link rel="stylesheet" href="styling/productSearchBlock.css">
         <title>Document</title>
     </head>
     <body>
@@ -20,15 +23,19 @@
                 </form>
             </div>
         </dialog>
+        <nav id="nav">
+            <ul id="nav__ul">
+                <li class="nav__item"><a href="http://localhost:3000/" class="nav__link">Ver productos</a></li>
+                <li class="nav__item"><a href="http://localhost:3000/productEditor" class="nav__link">Editar productos</a></li>
+            </ul>
+        </nav>
         <main>
-            <form id="newProduct" enctype="multipart/form-datas">
-                <input type="text" id="productName" placeholder="Producto" name="productName" required>
-                <input type="number" id="productPrice" placeholder="Precio" name="productPrice" required>
-                <input type="text" id="productType" placeholder="Type" name="productType">
-                <input type="text" id="productSubtype" placeholder="Subtype" name="productSubtype">
-                <input type="number" id="productAmount" placeholder="Amount" name="productAmount" required>
-                <input type="file" id="productFile" name="image">
-                <input type="submit" id="submitProduct">
+            <form id="search-form">
+                <input id="search-form__name" type="text" placeholder="Nomber">
+                <input id="search-form__floor-price" type="number" placeholder="Desde">
+                <input id="search-form__roof-price" type="number" placeholder="Hasta">
+                <input id="search-form__type" type="text" placeholder="Tipo">
+                <input id="search-form__subtype" type="text" placeholder="Sección">
             </form>
             <table>
                 <thead>
@@ -52,7 +59,6 @@
             </div>
         </main>
         <script type="module" src="tableContent.js"></script>
-        <script type="module" src="productForm.js"></script>
         <script type="module" src="modalWindow.js"></script>
     </body>
 </html>

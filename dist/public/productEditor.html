@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styling/productEditorPage.css">
+        <link rel="stylesheet" href="styling/navBar.css">
+        <link rel="stylesheet" href="styling/productInsertBlock.css">
+        <link rel="stylesheet" href="styling/modalWindow.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <dialog>
+            <div id="modal__content">
+                <h2 id="modal__title">Inserte el código de administrador</h2>
+                <h4 id="modal__answer"></h4>
+                <form id="modal__form">
+                    <input id="modal__password" type="text" required>
+                    <input id="modal__submit" type="submit">
+                </form>
+                <form method="dialog">
+                    <button id="modal__close-button">X</button>
+                </form>
+            </div>
+        </dialog>
+        <nav id="nav">
+            <ul id="nav__ul">
+                <li class="nav__item"><a href="http://localhost:3000/" class="nav__link">Ver productos</a></li>
+                <li class="nav__item"><a href="http://localhost:3000/productEditor" class="nav__link">Editar productos</a></li>
+            </ul>
+        </nav>
+        <main>
+            <form id="newProduct" enctype="multipart/form-datas">
+                    <input type="text" id="productName" placeholder="Producto" name="productName" required>
+                    <input type="number" id="productPrice" placeholder="Precio" name="productPrice" required>
+                    <input type="text" id="productType" placeholder="Type" name="productType">
+                    <input type="text" id="productSubtype" placeholder="Subtype" name="productSubtype">
+                    <input type="number" id="productAmount" placeholder="Amount" name="productAmount" required>
+                    <input type="file" id="productFile" name="image">
+                    <input type="submit" id="submitProduct">
+            </form>
+        </main>
+        <script type="module" src="modalWindow.js"></script>
+        <script type="module" src="productForm.js"></script>
+    </body>
+</html>

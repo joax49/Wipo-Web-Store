@@ -15,19 +15,6 @@ main > form, main > table {
     margin: 12px;
 }
 
-#newProduct {
-    width: 30%;
-    border: 1px solid #000;
-    border-radius: 8px;
-    padding: 12px;
-}
-
-#newProduct > input {
-    width: 100%;
-    margin: 1px;
-    box-sizing: border-box;
-}
-
 table {
     width: 30%;
     padding: 8px;
@@ -44,48 +31,4 @@ td > img {
     max-width: 100%;
     max-height: 100%;
     box-sizing: border-box;
-}
-
-dialog {
-    background-color: #0009;
-    width: 100vw;
-    height: 100vh;
-}
-
-#modal__content {
-    background-color: #fff;
-    padding: 10px 20px;
-    width: 20%;
-    margin: auto;
-    position: relative;
-}
-
-#modal__title, #modal__form {
-    margin: auto;
-    margin-top: 2px;
-}
-
-#modal__form > input {
-    width: 100%;
-    margin: 2px;
-    box-sizing: border-box;
-}
-
-#modal__close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-#page-selector {
-    width: 120px;
-    height: 30px;
-    display: flex;
-    flex-direction: row;
-}
-
-#page-selector > button, #page-selector > div {
-    width: 20px;
-    height: 20px;
-    text-align: center;
 }
