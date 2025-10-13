@@ -115,7 +115,7 @@ function getCurrentPage(): number {
 //Function for obtaining the current filters
 function getCurrentFilters(): ItemFilter {
     //The filter elements are all null by default
-    let filter = nullFilter;
+    let filter: ItemFilter = { ...nullFilter}
 
     //Getting the filters from the form
     const nameContent = formNameElement.value;

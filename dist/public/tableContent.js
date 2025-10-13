@@ -92,7 +92,7 @@ function getCurrentPage() {
 //Function for obtaining the current filters
 function getCurrentFilters() {
     //The filter elements are all null by default
-    let filter = nullFilter;
+    let filter = { ...nullFilter };
     //Getting the filters from the form
     const nameContent = formNameElement.value;
     const floorPriceContent = Number(formFloorPriceElement.value);
