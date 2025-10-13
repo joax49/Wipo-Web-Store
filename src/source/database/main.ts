@@ -21,4 +21,15 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products (
     subtype VARCHAR(50),
     amount SMALLINT NOT NULL,
     imagePath VARCHAR(100)
-    )`)
+    )`);
+
+//Creating a type alias for the product objects once they are stored as variables
+export type Product = {
+    id: number;
+    name: string;
+    price: number;
+    type: string;
+    subtype: string;
+    amount: number;
+    imagePath: string;
+}

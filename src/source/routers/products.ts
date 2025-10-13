@@ -5,4 +5,4 @@ export const productsRouter = express.Router();
 productsRouter.use(express.json());
 
 
-productsRouter.get('/getProducts/query/:page', getProductsController);
+productsRouter.get('/getProducts/query', getProductsController);
