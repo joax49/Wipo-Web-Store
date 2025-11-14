@@ -30,7 +30,6 @@ export async function getProductsController(req: Request, res: Response) {
         if(typeof roofPriceNumber === "number" && !Number.isNaN(roofPriceNumber)) allProducts = allProducts.filter(product => product.price <= roofPriceNumber);
         if(typeof searchedType === "string") allProducts = allProducts.filter(product => product.type.toLowerCase().includes(searchedType.toLowerCase()));
         if(typeof searchedSubtype === "string") allProducts = allProducts.filter(product => product.subtype.toLowerCase().includes(searchedSubtype.toLowerCase()));
-        console.log(allProducts)
 
         return res.status(200).send(allProducts)
     } catch (err) {

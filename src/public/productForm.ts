@@ -52,6 +52,10 @@ form.addEventListener("submit", async (b) => {
             modalWindow.showModal()
         }
 
+        else {
+            form.reset()
+        }
+
     } catch (e) {
         console.log(e)
     }
