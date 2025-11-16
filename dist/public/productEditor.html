@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="styling/navBar.css">
         <link rel="stylesheet" href="styling/productInsertBlock.css">
         <link rel="stylesheet" href="styling/modalWindow.css">
+        <link rel="stylesheet" href="styling/cartBlock.css">
         <title>Document</title>
     </head>
     <body>
@@ -31,16 +32,43 @@
         </nav>
         <main>
             <form id="newProduct" enctype="multipart/form-datas">
-                    <input type="text" id="productName" placeholder="Producto" name="productName" required>
-                    <input type="number" id="productPrice" placeholder="Precio" name="productPrice" required>
-                    <input type="text" id="productType" placeholder="Type" name="productType">
-                    <input type="text" id="productSubtype" placeholder="Subtype" name="productSubtype">
-                    <input type="number" id="productAmount" placeholder="Amount" name="productAmount" required>
-                    <input type="file" id="productFile" name="image">
-                    <input type="submit" id="submitProduct">
+                <label for="productName">Añadir producto</label>
+                <input type="text" id="productName" placeholder="Producto" name="productName" required>
+                <input type="number" id="productPrice" placeholder="Precio" name="productPrice" required>
+                <input type="text" id="productType" placeholder="Type" name="productType">
+                <input type="text" id="productSubtype" placeholder="Subtype" name="productSubtype">
+                <input type="number" id="productAmount" placeholder="Amount" name="productAmount" required>
+                <input type="file" id="productFile" name="image">
+                <input type="submit" id="submitProduct">
             </form>
+            <div id="cart">
+                <form id="cart__form">
+                    <label for="cart__product-finder">Carrito</label>
+                    <input type="text" id="cart__product-finder" placeholder="Nombre del poster">
+                    <datalist id="cartDataList">
+                        <option>Patagonia rebelde</option>
+                    </datalist>
+                </form>
+                <table id="cart__product-list">
+                    <thead>
+                        <tr>
+                            <th>Poster</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <tfoot>
+                        <td colspan="2">Total:</td>
+                        <td id="total"></td>
+                    </tfoot>
+                </table>
+            </div>
         </main>
         <script type="module" src="modalWindow.js"></script>
         <script type="module" src="productForm.js"></script>
+        <script type="module" src="cart.js."></script>
     </body>
 </html>
