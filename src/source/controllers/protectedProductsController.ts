@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { Request, Response } from "express";
 import { insertProduct } from "../database/addProducts.js";
 import { reduceAmount } from "../database/editProducts.js";
 
