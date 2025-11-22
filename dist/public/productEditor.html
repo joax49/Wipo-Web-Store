@@ -44,7 +44,9 @@
             <div id="cart">
                 <form id="cart__form">
                     <label for="cart__product-finder">Carrito</label>
-                    <input type="text" id="cart__product-finder" placeholder="Nombre del poster">
+                    <input type="text" id="cart__product-finder" placeholder="Nombre del poster" required>
+                    <input type="number" id="cart__product-amount" placeholder="Cantidad">
+                    <input type="submit">
                     <datalist id="cartDataList">
                         <option>Patagonia rebelde</option>
                     </datalist>
@@ -57,18 +59,18 @@
                             <th>Precio</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="cart__table-body">
                         
                     </tbody>
                     <tfoot>
                         <td colspan="2">Total:</td>
-                        <td id="total"></td>
+                        <td id="total-expense">0</td>
                     </tfoot>
                 </table>
             </div>
         </main>
         <script type="module" src="modalWindow.js"></script>
         <script type="module" src="productForm.js"></script>
-        <script type="module" src="cart.js."></script>
+        <script type="module" src="cart.js"></script>
     </body>
 </html>

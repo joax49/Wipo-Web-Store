@@ -5,11 +5,11 @@ export async function shoppingCartController(req: Request, res: Response) {
     try {
         const {product} = req.body;
 
-        if (!req.cookies.access_token) {
-            throw new Error("Invalid access: Must provide token")
+        if(typeof product !== "string") {
+            throw new Error("The searched product must be a string")
         }
 
-        const searchedProduct = searchProduct(product);
+        const searchedProduct = await searchProduct(product);
 
         res.status(201).send(searchedProduct);
     } catch(err) {

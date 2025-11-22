@@ -1,0 +1,70 @@
+const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
+
+const cartForm = document.getElementById("cart__form") as HTMLFormElement;
+const nameInput = document.getElementById("cart__product-finder") as HTMLInputElement;
+const amountInput = document.getElementById("cart__product-amount") as HTMLInputElement;
+
+const tableBody = document.getElementById('cart__table-body') as HTMLElement;
+const totalExpenseElement = document.getElementById("total-expense") as HTMLTableCellElement;
+
+cartForm.addEventListener('submit', async (b) => {
+    b.preventDefault();
+
+    try {
+
+        const amount = Number(amountInput.value);
+        if (typeof amount === "undefined" || amount < 1) {
+            throw new Error("The amount of posters is less than 1")
+        }
+
+        const response = await fetch('http://localhost:3000/protectedProducts/addToCart',
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({"product": nameInput.value}),
+                credentials: "include"
+            }
+        )
+
+        if(!response.ok) {
+            modalWindow.showModal()
+        }
+
+        else {
+            const data = await response.json();
+
+            const row = document.createElement('tr');
+
+            let posterPrice = 0;
+
+            if (typeof data.price === "number") {
+                posterPrice = amount * data.price
+            }
+
+            let totalExpense = Number(totalExpenseElement.innerText);
+            totalExpense += posterPrice;
+            if (typeof String(totalExpense) === "string") {
+                totalExpenseElement.innerText = "$" + String(totalExpense);
+            }
+
+            //Insert the data into each column
+            const elementName = document.createElement('td');
+            elementName.textContent = data.name;
+            const elementAmount = document.createElement('td');
+            elementAmount.textContent = amountInput.value;
+            const elementPrice = document.createElement('td');
+            elementPrice.textContent = "$" + posterPrice;
+
+            row.appendChild(elementName);
+            row.appendChild(elementAmount);
+            row.appendChild(elementPrice);
+
+            tableBody.appendChild(row);
+        }
+
+    } catch (err) {
+        console.log(err)
+    }
+})

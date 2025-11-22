@@ -1,11 +1,11 @@
 const form = document.getElementById("newProduct");
-const button = document.getElementById("submitProduct");
-const nameInput = document.getElementById("productName");
-const priceInput = document.getElementById("productPrice");
-const typeInput = document.getElementById("productType");
-const subtypeInput = document.getElementById("productSubtype");
-const amountInput = document.getElementById("productAmount");
-const fileInput = document.getElementById("productFile");
+// const button = document.getElementById("submitProduct") as HTMLButtonElement;
+// const nameInput = document.getElementById("productName") as HTMLInputElement;
+// const priceInput = document.getElementById("productPrice") as HTMLInputElement;
+// const typeInput = document.getElementById("productType") as HTMLInputElement;
+// const subtypeInput = document.getElementById("productSubtype") as HTMLInputElement;
+// const amountInput = document.getElementById("productAmount") as HTMLInputElement;
+// const fileInput = document.getElementById("productFile") as HTMLInputElement;
 const modalWindow = document.querySelector('dialog');
 form.addEventListener("submit", async (b) => {
     b.preventDefault();
