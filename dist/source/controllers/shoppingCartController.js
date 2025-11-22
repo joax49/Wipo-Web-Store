@@ -6,7 +6,6 @@ export async function shoppingCartController(req, res) {
             throw new Error("The searched product must be a string");
         }
         const searchedProduct = await searchProduct(product);
-        console.log(searchedProduct);
         res.status(201).send(searchedProduct);
     }
     catch (err) {

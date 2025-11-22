@@ -27,12 +27,12 @@ cartForm.addEventListener('submit', async (b) => {
             const row = document.createElement('tr');
             let posterPrice = 0;
             if (typeof data.price === "number") {
-                posterPrice = amount * data.price;
+                posterPrice = data.price;
             }
-            let totalExpense = Number(totalExpenseElement.innerText);
-            totalExpense += posterPrice;
+            let totalExpense = Number(totalExpenseElement.innerText.slice(1));
+            totalExpense += amount * posterPrice;
             if (typeof String(totalExpense) === "string") {
-                totalExpenseElement.innerText = String(totalExpense);
+                totalExpenseElement.innerText = "$" + String(totalExpense);
             }
             //Insert the data into each column
             const elementName = document.createElement('td');
