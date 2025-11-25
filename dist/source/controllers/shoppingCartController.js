@@ -12,4 +12,14 @@ export async function shoppingCartController(req, res) {
         res.status(401).send(err);
     }
 }
+export async function sellingItemsController(req, res) {
+    try {
+        const { items } = req.body;
+        console.log(items);
+        res.status(201).send();
+    }
+    catch (err) {
+        res.status(401).send(err);
+    }
+}
 //# sourceMappingURL=shoppingCartController.js.map
