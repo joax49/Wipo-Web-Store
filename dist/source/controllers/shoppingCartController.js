@@ -15,7 +15,9 @@ export async function shoppingCartController(req, res) {
 export async function sellingItemsController(req, res) {
     try {
         const { items } = req.body;
-        console.log(items);
+        for (let i = 0; i < items.length; i++) {
+            console.log(items[i]);
+        }
         res.status(201).send();
     }
     catch (err) {
