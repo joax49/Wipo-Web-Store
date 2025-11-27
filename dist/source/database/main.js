@@ -19,4 +19,11 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products (
     amount SMALLINT NOT NULL,
     imagePath VARCHAR(100)
     )`);
+await pool.query(`CREATE TABLE IF NOT EXISTS sales (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    productId BIGSERIAL NOT NULL REFERENCES products(id),
+    amount INT NOT NULL,
+    price INT NOT NULL,
+    date DATE
+    )`);
 //# sourceMappingURL=main.js.map

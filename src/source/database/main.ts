@@ -23,6 +23,14 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products (
     imagePath VARCHAR(100)
     )`);
 
+await pool.query(`CREATE TABLE IF NOT EXISTS sales (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    productId BIGSERIAL NOT NULL REFERENCES products(id),
+    amount INT NOT NULL,
+    price INT NOT NULL,
+    date DATE
+    )`)
+
 //Creating a type alias for the product objects once they are stored as variables
 export type Product = {
     id: number;
