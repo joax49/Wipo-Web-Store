@@ -41,3 +41,10 @@ export type Product = {
     amount: number;
     imagePath: string;
 }
+
+export type CartItem = {
+    id: number;
+    name: string;
+    price: number;
+    amount: number;
+}

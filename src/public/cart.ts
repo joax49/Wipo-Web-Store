@@ -1,3 +1,5 @@
+import { CartService } from "./cartService.js";
+
 const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
 
 const cartForm = document.getElementById("cart__form") as HTMLFormElement;
@@ -9,12 +11,17 @@ const totalExpenseElement = document.getElementById("total-expense") as HTMLTabl
 
 const buyingButton = document.getElementById('cart__buy-button') as HTMLButtonElement;
 
+const cart = new CartService();
+
+//Event for listing products into the cart
 cartForm.addEventListener('submit', async (b) => {
     b.preventDefault();
 
     try {
 
+        //Getting the amount the user submited
         const amount = Number(amountInput.value);
+        //Making sure the user inserted an integer above 0
         if (typeof amount === "undefined" || amount < 1) {
             throw new Error("The amount of posters is less than 1")
         }
@@ -25,7 +32,7 @@ cartForm.addEventListener('submit', async (b) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({"product": nameInput.value})
+                body: JSON.stringify({"productName": nameInput.value})
             }
         )
 
@@ -35,10 +42,8 @@ cartForm.addEventListener('submit', async (b) => {
 
         else {
             const data = await response.json();
-
             const row = document.createElement('tr');
-
-            sessionStorage.setItem(String(sessionStorage.length + 1), JSON.stringify(data))
+            cart.add(data);
 
             //
             let posterPrice = 0;
@@ -74,17 +79,10 @@ cartForm.addEventListener('submit', async (b) => {
     }
 })
 
+//Event for when the user buys the products they listed
 buyingButton.addEventListener('click', async () => {
 
-    let allItems: Object[] = [];
-
-    for (let i = 1; i <= sessionStorage.length; i++) {
-        const item = sessionStorage.getItem(String(i))
-
-        if(item) {
-            allItems.push(item)
-        }
-    }
+    const allItems = cart.getAll();
 
     const response = await fetch('http://localhost:3000/protectedProducts/sellItems',
         {
@@ -97,11 +95,10 @@ buyingButton.addEventListener('click', async () => {
         }
     )
 
-    console.log(response)
-
     //Clearing the items
     if(response.ok) {
-        sessionStorage.clear();
+        cart.clear();
         tableBody.innerHTML = "";
+        totalExpenseElement.innerText = "0";
     }
 })
