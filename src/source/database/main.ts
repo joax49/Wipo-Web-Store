@@ -30,21 +30,3 @@ await pool.query(`CREATE TABLE IF NOT EXISTS sales (
     price INT NOT NULL,
     date DATE
     )`)
-
-//Creating a type alias for the product objects once they are stored as variables
-export type Product = {
-    id: number;
-    name: string;
-    price: number;
-    type: string;
-    subtype: string;
-    amount: number;
-    imagePath: string;
-}
-
-export type CartItem = {
-    id: number;
-    name: string;
-    price: number;
-    amount: number;
-}
