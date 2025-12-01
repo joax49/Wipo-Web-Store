@@ -29,3 +29,13 @@ export function isCartItem(item: any): item is CartItem {
         typeof item.quantity === "number"
     )
 }
+
+// Type alias for sales
+export type Sale = {
+    id: number;
+    productId: number;
+    productName: string;
+    amount: number;
+    price: number;
+    date: string;
+}
