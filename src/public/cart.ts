@@ -1,3 +1,4 @@
+import { CartItem } from "../source/database/typeCasting.js";
 import { CartService } from "./cartService.js";
 
 const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
@@ -19,13 +20,14 @@ cartForm.addEventListener('submit', async (b) => {
 
     try {
 
-        //Getting the amount the user submited
+        // Getting the amount the user submited
         const amount = Number(amountInput.value);
-        //Making sure the user inserted an integer above 0
+        // Making sure the user inserted an integer above 0
         if (typeof amount === "undefined" || amount < 1) {
             throw new Error("The amount of posters is less than 1")
         }
 
+        // Fetching the searched item
         const response = await fetch('http://localhost:3000/protectedProducts/addToCart',
             {
                 method: "POST",
@@ -43,12 +45,24 @@ cartForm.addEventListener('submit', async (b) => {
         else {
             const data = await response.json();
 
+            // Variable holding the amount of items the user requested
+            let requestedAmount = Number(amountInput.value);
+            // Error in case the user requested an item that is out of stock
+            if (data.amount <= 0) throw new Error("Out of stock");
+            // If the user requested more items than there is
+            if (requestedAmount > data.amount) requestedAmount = data.amount;
+
+            const item: CartItem = {
+                id: data.id,
+                name: data.name,
+                price: data.price,
+                amount: requestedAmount
+            }
+
             const row = document.createElement('tr');
-            cart.add(data);
+            cart.add(item);
 
-            //
             let posterPrice = 0;
-
             if (typeof data.price === "number") {
                 posterPrice = data.price
             }

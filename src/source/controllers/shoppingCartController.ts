@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import { searchProduct } from "../database/searchProduct.js";
 import { sellProduct } from "../database/sellProducts.js";
-import { CartItem, isCartItem } from "../database/typeCasting.js"; 
-import { getSales } from "../database/getSales.js";
+import { CartItem, isCartItem } from "../database/typeCasting.js";
 
 export async function shoppingCartController(req: Request, res: Response) {
     try {
@@ -30,7 +29,6 @@ export async function shoppingCartController(req: Request, res: Response) {
 export async function sellingItemsController(req: Request, res: Response) {
     try {
         const {items} = req.body;
-        console.log(items)
 
         // If "items" is not an array
         if (!Array.isArray(items)) {
@@ -47,9 +45,7 @@ export async function sellingItemsController(req: Request, res: Response) {
             sellProduct(items[i].id, items[i].amount, items[i].price)
         }
 
-        const sales = await getSales();
-        console.log(sales)
-        res.status(201).send(sales);
+        res.status(201).send();
     } catch (err) {
         res.status(500).json({error: "Server error"});
     }

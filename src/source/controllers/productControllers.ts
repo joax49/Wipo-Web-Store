@@ -10,12 +10,6 @@ export async function getProductsController(req: Request, res: Response) {
             searchedType, searchedSubtype
         } = req.query;
 
-        console.log(searchedProduct);
-        console.log(floorPrice);
-        console.log(roofPrice);
-        console.log(searchedType);
-        console.log(searchedSubtype);
-
         const floorPriceNumber = Number(floorPrice);
         const roofPriceNumber = Number(roofPrice);
 

@@ -2,7 +2,6 @@ import jwt from "jsonwebtoken";
 export async function authController(req, res) {
     try {
         const { password } = req.body;
-        console.log(password);
         if (password === process.env.ADMIN_KEY && typeof process.env.JWT_KEY === "string") {
             const token = jwt.sign({ admin: true }, process.env.JWT_KEY, {
                 expiresIn: "6h"

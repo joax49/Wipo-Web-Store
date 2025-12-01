@@ -5,8 +5,6 @@ export async function authController(req: Request, res: Response) {
     try {
         const {password} = req.body;
 
-        console.log(password)
-
         if (password === process.env.ADMIN_KEY && typeof process.env.JWT_KEY === "string") {
 
             const token = jwt.sign({admin: true}, process.env.JWT_KEY, {
