@@ -1,4 +1,7 @@
 import { Pool } from 'pg';
+import PG from 'pg';
+// Adjusting the pool so "bigserial" is automatically transformed into a number
+PG.types.setTypeParser(PG.types.builtins.INT8, (value) => parseInt(value, 10));
 //Creating the pool
 export const pool = new Pool({
     host: '127.0.0.1',

@@ -1,4 +1,5 @@
-import { pool, Product } from "./main.js";
+import { pool } from "./main.js";
+import { Product } from "./typeCasting.js";
 
 //A function for searching a specific product for the cart
 export async function searchProduct(productName: string): Promise<Product> {
@@ -6,5 +7,5 @@ export async function searchProduct(productName: string): Promise<Product> {
         SELECT * FROM products WHERE name = $1
         `, [productName.toLowerCase()])
 
-    return products.rows[0]
+    return products.rows[0] as Product
 }

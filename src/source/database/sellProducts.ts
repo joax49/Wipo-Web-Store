@@ -8,6 +8,8 @@ export async function sellProduct(productId: number, amount: number, price: numb
         `, [productId, amount, price])
 
     await pool.query(`
-        UPDATE products SET amount-$1 WHERE id = $2
+        UPDATE products
+        SET amount = amount - $1
+        WHERE id = $2
         `, [amount, productId]);
 }

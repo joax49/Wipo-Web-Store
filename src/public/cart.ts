@@ -42,6 +42,7 @@ cartForm.addEventListener('submit', async (b) => {
 
         else {
             const data = await response.json();
+
             const row = document.createElement('tr');
             cart.add(data);
 

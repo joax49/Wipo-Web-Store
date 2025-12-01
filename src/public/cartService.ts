@@ -1,4 +1,4 @@
-import { CartItem } from "../source/database/main.js";
+import { CartItem } from "../source/database/typeCasting.js"; 
 
 export class CartService {
     private key = "cart";

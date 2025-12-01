@@ -26,7 +26,7 @@ export function isCartItem(item: any): item is CartItem {
         typeof item.id === "number" &&
         typeof item.name === "string" &&
         typeof item.price === "number" &&
-        typeof item.quantity === "number"
+        typeof item.amount === "number"
     )
 }
 

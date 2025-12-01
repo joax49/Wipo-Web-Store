@@ -5,6 +5,6 @@ export function isCartItem(item) {
         typeof item.id === "number" &&
         typeof item.name === "string" &&
         typeof item.price === "number" &&
-        typeof item.quantity === "number");
+        typeof item.amount === "number");
 }
 //# sourceMappingURL=typeCasting.js.map
