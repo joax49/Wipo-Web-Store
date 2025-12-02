@@ -1,5 +1,5 @@
 //Selecting the HTML elements
-const tableBody = document.querySelector('tbody');
+const productDisplay = document.getElementById("product-display");
 const previousPageButton = document.getElementById("page-selector__previous-page");
 const nextPageButton = document.getElementById("page-selector__next-page");
 const displayPage = document.getElementById("page-selector__page-indicator");
@@ -26,7 +26,6 @@ async function fillTable(page, filter) {
         url[url.length - 1] === "?" ? url += "searchedType=" + filter.type : url += "&searchedType=" + filter.type;
     if (filter.subtype)
         url[url.length - 1] === "?" ? url += "searchedSubtype=" + filter.subtype : url += "&searchedSubtype=" + filter.subtype;
-    console.log(url);
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -40,41 +39,39 @@ async function fillTable(page, filter) {
             const element = data[i + (page - 1) * 20];
             if (!element)
                 continue;
-            const row = document.createElement('tr');
-            //Insert the data into each column
-            const elementId = document.createElement('td');
-            elementId.textContent = element.id;
-            const elementName = document.createElement('td');
+            const gridItem = document.createElement('div');
+            gridItem.classList.add("product-display__item");
+            //Insert the data into each element
+            const elementName = document.createElement('h3');
             elementName.textContent = element.name;
-            const elementPrice = document.createElement('td');
+            const elementPrice = document.createElement('p');
             elementPrice.textContent = "$" + element.price;
-            const elementType = document.createElement('td');
+            const elementType = document.createElement('p');
             elementType.textContent = element.type;
-            const elementSubtype = document.createElement('td');
+            const elementSubtype = document.createElement('p');
             elementSubtype.textContent = element.subtype;
-            const elementAmount = document.createElement('td');
+            const elementAmount = document.createElement('p');
             elementAmount.textContent = element.amount;
-            const elementImage = document.createElement('td');
+            const elementImage = document.createElement('div');
+            elementImage.classList.add("product-images");
             elementImage.innerHTML = `<img src="http://localhost:3000/images/${element.imagepath}" alt="No image available">`;
-            ;
-            //Inserting columns into the row
-            row.append(elementId);
-            row.append(elementName);
-            row.append(elementPrice);
-            row.append(elementType);
-            row.append(elementSubtype);
-            row.append(elementAmount);
-            row.append(elementImage);
-            //Inserting the rows into the fragment
-            fragment.append(row);
+            //Inserting each elment into the div
+            gridItem.append(elementName);
+            gridItem.append(elementPrice);
+            gridItem.append(elementType);
+            gridItem.append(elementSubtype);
+            gridItem.append(elementAmount);
+            gridItem.append(elementImage);
+            // //Inserting the rows into the fragment
+            fragment.append(gridItem);
         }
         //Appending the fragment to the table body
-        if (tableBody) {
-            tableBody.appendChild(fragment);
+        if (productDisplay) {
+            productDisplay.appendChild(fragment);
         }
     }
-    catch (error) {
-        console.log(error);
+    catch (err) {
+        console.error(err);
     }
 }
 const nullFilter = {
@@ -116,7 +113,7 @@ function getCurrentFilters() {
 async function searchPageProducts(changeAmount) {
     let page = getCurrentPage() + changeAmount;
     //Setting the table empty so it can be filled again
-    tableBody.innerHTML = "";
+    productDisplay.innerHTML = "";
     if (page < 1) {
         page = 1;
         displayPage.innerHTML = "1";
