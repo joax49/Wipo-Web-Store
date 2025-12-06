@@ -11,8 +11,10 @@ const formFloorPriceElement = document.getElementById("search-form__floor-price"
 const formRoofPriceElement = document.getElementById("search-form__roof-price");
 const formTypeElement = document.getElementById("search-form__type");
 const formSubtypeElement = document.getElementById("search-form__subtype");
-//Function for filling the table with the products
-async function fillTable(page, filter) {
+//Function for filling the display with the products
+async function fillDisplay(page, filter) {
+    //Setting the display empty so it can be filled again
+    productDisplay.innerHTML = "";
     let url = "http://localhost:3000/products/getProducts/query?";
     //Checking if the filter "name" filter exist
     if (filter.searchedName)
@@ -117,19 +119,17 @@ function getCurrentFilters() {
     return filter;
 }
 //Function for searching specific posters
-async function searchPageProducts(changeAmount) {
+export async function searchPageProducts(changeAmount) {
     let page = getCurrentPage() + changeAmount;
-    //Setting the table empty so it can be filled again
-    productDisplay.innerHTML = "";
     if (page < 1) {
         page = 1;
         displayPage.innerHTML = "1";
     }
-    await fillTable(page, getCurrentFilters());
+    await fillDisplay(page, getCurrentFilters());
     displayPage.innerHTML = String(page);
 }
 //Event for filling the table once the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => fillTable(1, nullFilter));
+document.addEventListener('DOMContentLoaded', () => fillDisplay(1, nullFilter));
 //Events for changing page number
 previousPageButton.addEventListener('click', () => searchPageProducts(-1));
 nextPageButton.addEventListener('click', () => searchPageProducts(1));

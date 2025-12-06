@@ -23,8 +23,11 @@ type ItemFilter = {
     subtype: string | null;
 }
 
-//Function for filling the table with the products
-async function fillTable(page: number, filter: ItemFilter) {
+//Function for filling the display with the products
+async function fillDisplay(page: number, filter: ItemFilter) {
+
+    //Setting the display empty so it can be filled again
+    productDisplay.innerHTML = "";
 
     let url = "http://localhost:3000/products/getProducts/query?";
 
@@ -141,24 +144,21 @@ function getCurrentFilters(): ItemFilter {
 }
 
 //Function for searching specific posters
-async function searchPageProducts(changeAmount: number) {
+export async function searchPageProducts(changeAmount: number) {
     
     let page = getCurrentPage() + changeAmount;
-
-    //Setting the table empty so it can be filled again
-    productDisplay.innerHTML = "";
 
     if(page < 1) {
         page = 1;
         displayPage.innerHTML = "1";
     }
 
-    await fillTable(page, getCurrentFilters());
+    await fillDisplay(page, getCurrentFilters());
     displayPage.innerHTML = String(page);
 }
 
 //Event for filling the table once the DOM is loaded
-document.addEventListener('DOMContentLoaded', ()=>fillTable(1, nullFilter))
+document.addEventListener('DOMContentLoaded', ()=>fillDisplay(1, nullFilter))
 
 //Events for changing page number
 previousPageButton.addEventListener('click', ()=>searchPageProducts(-1))

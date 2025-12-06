@@ -1,4 +1,5 @@
 import { CartService } from "./cartService.js";
+import { searchPageProducts } from "./displayContent.js";
 const modalWindow = document.querySelector('dialog');
 const tableBody = document.getElementById('cart__table-body');
 const totalExpenseElement = document.getElementById("total-expense");
@@ -73,6 +74,7 @@ buyingButton.addEventListener('click', async () => {
         cart.clear();
         tableBody.innerHTML = "";
         totalExpenseElement.innerText = "0";
+        searchPageProducts(0);
     }
 });
 document.addEventListener('DOMContentLoaded', () => sessionStorage.clear());

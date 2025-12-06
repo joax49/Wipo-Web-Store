@@ -1,5 +1,6 @@
 import { CartItem } from "../source/database/typeCasting.js";
 import { CartService } from "./cartService.js";
+import { searchPageProducts } from "./displayContent.js";
 
 const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
 
@@ -102,6 +103,8 @@ buyingButton.addEventListener('click', async () => {
         cart.clear();
         tableBody.innerHTML = "";
         totalExpenseElement.innerText = "0";
+
+        searchPageProducts(0);
     }
 })
 

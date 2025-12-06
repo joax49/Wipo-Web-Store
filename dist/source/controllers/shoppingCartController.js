@@ -23,6 +23,9 @@ export async function shoppingCartController(req, res) {
 export async function sellingItemsController(req, res) {
     try {
         const { items } = req.body;
+        if (!req.cookies.access_token) {
+            throw new Error("Invalid access: Must provide token");
+        }
         // If "items" is not an array
         if (!Array.isArray(items)) {
             return res.status(400).json({ error: "items must be an array" });
@@ -35,7 +38,7 @@ export async function sellingItemsController(req, res) {
             console.log(items[i]);
             sellProduct(items[i].id, items[i].amount, items[i].price);
         }
-        res.status(201).send();
+        res.status(201).send("Items sold correctly");
     }
     catch (err) {
         res.status(500).json({ error: "Server error" });
