@@ -1,78 +1,58 @@
 import { CartService } from "./cartService.js";
 const modalWindow = document.querySelector('dialog');
-const cartForm = document.getElementById("cart__form");
-const nameInput = document.getElementById("cart__product-finder");
-const amountInput = document.getElementById("cart__product-amount");
 const tableBody = document.getElementById('cart__table-body');
 const totalExpenseElement = document.getElementById("total-expense");
 const buyingButton = document.getElementById('cart__buy-button');
 const cart = new CartService();
-//Event for listing products into the cart
-cartForm.addEventListener('submit', async (b) => {
-    b.preventDefault();
+// Function for loading the cart's content in the display
+export async function loadCartItems() {
+    tableBody.innerHTML = "";
+    const cartItems = cart.getAll();
+    let totalExpense = 0;
+    for (let i = 0; i < cartItems.length; i++) {
+        const cartItem = cartItems[i];
+        totalExpense += cartItem.price * cartItem.amount;
+        totalExpenseElement.innerText = "$" + String(totalExpense);
+        const row = document.createElement('tr');
+        //Insert the data into each column
+        const elementName = document.createElement('td');
+        elementName.textContent = cartItem.name;
+        const elementAmount = document.createElement('td');
+        elementAmount.textContent = String(cartItem.amount);
+        const elementPrice = document.createElement('td');
+        elementPrice.textContent = "$" + String(cartItem.price);
+        //Inserting data into the row
+        row.appendChild(elementName);
+        row.appendChild(elementAmount);
+        row.appendChild(elementPrice);
+        tableBody.appendChild(row);
+    }
+}
+// Function for adding items into the cart
+export async function handleAddToCart(productId) {
     try {
-        // Getting the amount the user submited
-        const amount = Number(amountInput.value);
-        // Making sure the user inserted an integer above 0
-        if (typeof amount === "undefined" || amount < 1) {
-            throw new Error("The amount of posters is less than 1");
-        }
         // Fetching the searched item
         const response = await fetch('http://localhost:3000/protectedProducts/addToCart', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ "productName": nameInput.value })
+            body: JSON.stringify({ "productId": productId })
         });
-        if (!response.ok) {
-            modalWindow.showModal();
-        }
-        else {
-            const data = await response.json();
-            // Variable holding the amount of items the user requested
-            let requestedAmount = Number(amountInput.value);
-            // Error in case the user requested an item that is out of stock
-            if (data.amount <= 0)
-                throw new Error("Out of stock");
-            // If the user requested more items than there is
-            if (requestedAmount > data.amount)
-                requestedAmount = data.amount;
-            const item = {
-                id: data.id,
-                name: data.name,
-                price: data.price,
-                amount: requestedAmount
-            };
-            const row = document.createElement('tr');
-            cart.add(item);
-            let posterPrice = 0;
-            if (typeof data.price === "number") {
-                posterPrice = data.price;
-            }
-            //Updating the total amount of the expense
-            let totalExpense = Number(totalExpenseElement.innerText.slice(1));
-            totalExpense += amount * posterPrice;
-            if (typeof String(totalExpense) === "string") {
-                totalExpenseElement.innerText = "$" + String(totalExpense);
-            }
-            //Insert the data into each column
-            const elementName = document.createElement('td');
-            elementName.textContent = data.name;
-            const elementAmount = document.createElement('td');
-            elementAmount.textContent = amountInput.value;
-            const elementPrice = document.createElement('td');
-            elementPrice.textContent = "$" + posterPrice;
-            row.appendChild(elementName);
-            row.appendChild(elementAmount);
-            row.appendChild(elementPrice);
-            tableBody.appendChild(row);
-        }
+        const data = await response.json();
+        const item = {
+            id: data.id,
+            name: data.name,
+            price: data.price,
+            amount: 1
+        };
+        cart.add(item);
+        loadCartItems();
     }
     catch (err) {
         console.log(err);
     }
-});
+}
 //Event for when the user buys the products they listed
 buyingButton.addEventListener('click', async () => {
     const allItems = cart.getAll();
@@ -84,11 +64,16 @@ buyingButton.addEventListener('click', async () => {
         body: JSON.stringify({ items: allItems }),
         credentials: 'include'
     });
+    if (!response.ok) {
+        modalWindow.showModal();
+        return;
+    }
     //Clearing the items
-    if (response.ok) {
+    else {
         cart.clear();
         tableBody.innerHTML = "";
         totalExpenseElement.innerText = "0";
     }
 });
+document.addEventListener('DOMContentLoaded', () => sessionStorage.clear());
 //# sourceMappingURL=cart.js.map

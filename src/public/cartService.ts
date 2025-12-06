@@ -18,7 +18,7 @@ export class CartService {
     }
 
     // Adds an item
-    add(item: CartItem): void {
+    add(newItem: CartItem): void {
 
         if(!sessionStorage.getItem(this.key)) {
             sessionStorage.setItem("cart", "[]")
@@ -26,7 +26,17 @@ export class CartService {
 
         try {
             const cart = this.getAll();
-            cart.push(item);
+            let isItemInCart = false;
+
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === newItem.id) {
+                    cart[i].amount += 1;
+                    sessionStorage.setItem(this.key, JSON.stringify(cart));
+                    return
+                }
+            }
+
+            cart.push(newItem);
             sessionStorage.setItem(this.key, JSON.stringify(cart));
         } catch(err) {
             console.error("Couldn't add item")
