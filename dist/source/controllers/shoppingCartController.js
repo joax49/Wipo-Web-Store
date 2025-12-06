@@ -3,11 +3,11 @@ import { sellProduct } from "../database/sellProducts.js";
 import { isCartItem } from "../database/typeCasting.js";
 export async function shoppingCartController(req, res) {
     try {
-        const { productName } = req.body;
-        if (typeof productName !== "string") {
-            throw new Error("The searched product must be a string");
+        const { productId } = req.body;
+        if (typeof productId !== "number") {
+            throw new Error("The id must be a number");
         }
-        const searchedProduct = await searchProduct(productName);
+        const searchedProduct = await searchProduct(productId);
         const product = {
             id: searchedProduct.id,
             name: searchedProduct.name,

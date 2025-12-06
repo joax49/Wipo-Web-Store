@@ -5,13 +5,13 @@ import { CartItem, isCartItem } from "../database/typeCasting.js";
 
 export async function shoppingCartController(req: Request, res: Response) {
     try {
-        const {productName} = req.body;
+        const {productId} = req.body;
 
-        if(typeof productName !== "string") {
-            throw new Error("The searched product must be a string")
+        if(typeof productId !== "number") {
+            throw new Error("The id must be a number")
         }
 
-        const searchedProduct = await searchProduct(productName);
+        const searchedProduct = await searchProduct(productId);
 
         const product: CartItem = {
             id: searchedProduct.id,

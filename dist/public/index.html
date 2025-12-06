@@ -30,6 +30,25 @@
             </ul>
         </nav>
         <main>
+            <div id="cart">
+                <table id="cart__product-list">
+                    <thead>
+                        <tr>
+                            <th>Poster</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart__table-body">
+                        
+                    </tbody>
+                    <tfoot>
+                        <td colspan="2">Total:</td>
+                        <td id="total-expense">$0</td>
+                    </tfoot>
+                </table>
+                <button id="cart__buy-button">Comprar</button>
+            </div>
             <form id="search-form">
                 <input id="search-form__name" type="text" placeholder="Nombre">
                 <input id="search-form__floor-price" type="number" placeholder="Precio mínimo">
@@ -46,7 +65,7 @@
                 <button id="page-selector__next-page">&gt</button>
             </div>
         </main>
-        <script type="module" src="tableContent.js"></script>
+        <script type="module" src="displayContent.js"></script>
         <script type="module" src="modalWindow.js"></script>
     </body>
 </html>

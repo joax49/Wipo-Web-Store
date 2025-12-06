@@ -41,34 +41,6 @@
                 <input type="file" id="productFile" name="image">
                 <input type="submit" id="submitProduct">
             </form>
-            <div id="cart">
-                <form id="cart__form">
-                    <label for="cart__product-finder">Carrito</label>
-                    <input type="text" id="cart__product-finder" placeholder="Nombre del poster" required>
-                    <input type="number" id="cart__product-amount" placeholder="Cantidad">
-                    <input type="submit">
-                    <datalist id="cartDataList">
-                        <option>Patagonia rebelde</option>
-                    </datalist>
-                </form>
-                <table id="cart__product-list">
-                    <thead>
-                        <tr>
-                            <th>Poster</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cart__table-body">
-                        
-                    </tbody>
-                    <tfoot>
-                        <td colspan="2">Total:</td>
-                        <td id="total-expense">$0</td>
-                    </tfoot>
-                </table>
-                <button id="cart__buy-button">Comprar</button>
-            </div>
         </main>
         <script type="module" src="modalWindow.js"></script>
         <script type="module" src="productForm.js"></script>
