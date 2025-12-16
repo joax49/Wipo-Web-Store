@@ -1,4 +1,5 @@
 import { insertProduct } from "../database/addProducts.js";
+import { isExistingProduct } from "../database/isExistingProduct.js";
 export async function postProductsController(req, res) {
     try {
         {
@@ -12,6 +13,10 @@ export async function postProductsController(req, res) {
             if (typeof productName !== "string") {
                 return res.status(406).send("Product must have a name");
             }
+            //checking if the product name is already on the database
+            const productExists = await isExistingProduct(productName);
+            if (productExists)
+                return res.status(406).send("Product name already exists");
             //Converting price and amount to numbers
             const productPriceAsNumber = Number(productPrice);
             const productAmountAsNumber = Number(productAmount);

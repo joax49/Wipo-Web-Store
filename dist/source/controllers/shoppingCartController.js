@@ -1,4 +1,4 @@
-import { searchProduct } from "../database/searchProduct.js";
+import { searchProductById } from "../database/searchProduct.js";
 import { sellProduct } from "../database/sellProducts.js";
 import { isCartItem } from "../database/typeCasting.js";
 export async function shoppingCartController(req, res) {
@@ -7,7 +7,7 @@ export async function shoppingCartController(req, res) {
         if (typeof productId !== "number") {
             throw new Error("The id must be a number");
         }
-        const searchedProduct = await searchProduct(productId);
+        const searchedProduct = await searchProductById(productId);
         const product = {
             id: searchedProduct.id,
             name: searchedProduct.name,
