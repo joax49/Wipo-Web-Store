@@ -50,11 +50,11 @@ async function fillDisplay(page, filter) {
             const elementPrice = document.createElement('p');
             elementPrice.textContent = "$" + element.price;
             const elementType = document.createElement('p');
-            elementType.textContent = element.type;
+            elementType.textContent = "Tipo: " + element.type;
             const elementSubtype = document.createElement('p');
-            elementSubtype.textContent = element.subtype;
+            elementSubtype.textContent = "Sección: " + element.subtype;
             const elementAmount = document.createElement('p');
-            elementAmount.textContent = element.amount;
+            elementAmount.textContent = "Cantidad: " + element.amount;
             const elementImage = document.createElement('div');
             elementImage.classList.add("product-images");
             elementImage.innerHTML = `<img src="http://localhost:3000/images/${element.imagepath}" alt="No image available">`;

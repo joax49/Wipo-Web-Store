@@ -1,5 +1,5 @@
 #nav {
-    background-color: #ccc;
+    background-color: #674f2d;
     height: 30px;
 }
 
@@ -11,16 +11,17 @@
 
 .nav__item {
     text-align: center;
-    padding: 6px;
-    width: 6vw;
+    padding: 6px 0;
+    width: 140px;
     list-style: none;
+    
 }
 
 .nav__item:hover {
-    background-color: #aaa;
+    background-color: #745831;
 }
 
 .nav__link {
-    color: #d44;
+    color: #000;
     text-decoration: none;
 }
