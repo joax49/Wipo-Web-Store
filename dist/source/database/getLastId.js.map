@@ -1,0 +1,1 @@
+{"version":3,"file":"getLastId.js","sourceRoot":"","sources":["../../../src/source/database/getLastId.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,WAAW,CAAC;AAEjC,MAAM,CAAC,KAAK,UAAU,YAAY;IAC9B,MAAM,IAAI,GAAG,MAAM,IAAI,CAAC,KAAK,CAAC;;;SAGzB,CAAC,CAAC;IAEP,OAAO,IAAI,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,EAAY,CAAA;AACpC,CAAC"}

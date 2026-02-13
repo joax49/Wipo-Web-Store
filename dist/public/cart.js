@@ -33,7 +33,7 @@ export async function loadCartItems() {
 export async function handleAddToCart(productId) {
     try {
         // Fetching the searched item
-        const response = await fetch('http://localhost:3000/protectedProducts/addToCart', {
+        const response = await fetch('https://wipo.jxmtz.xyz/protectedProducts/addToCart', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

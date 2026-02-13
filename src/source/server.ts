@@ -44,11 +44,11 @@ app.use(cookieParser());
 app.use(express.json({"limit": '50mb'}));
 app.use(express.urlencoded({"limit": "50mb", "extended": true}))
 
-// app.use(cors({
-//     origin: "https://wipo.jxmtz.xyz", 
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true, // if using cookies/auth headers
-// }));
+app.use(cors({
+    origin: "https://wipo.jxmtz.xyz", 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if using cookies/auth headers
+}));
 
 //Serving the HTML file from public directory
 app.get('/', (req, res) => {

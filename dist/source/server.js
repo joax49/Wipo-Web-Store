@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import multer from 'multer';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -35,11 +36,11 @@ app.use(cookieParser());
 //Extending the limit for the file size
 app.use(express.json({ "limit": '50mb' }));
 app.use(express.urlencoded({ "limit": "50mb", "extended": true }));
-// app.use(cors({
-//     origin: "https://wipo.jxmtz.xyz", 
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true, // if using cookies/auth headers
-// }));
+app.use(cors({
+    origin: "https://wipo.jxmtz.xyz",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if using cookies/auth headers
+}));
 //Serving the HTML file from public directory
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
