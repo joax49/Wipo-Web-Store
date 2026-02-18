@@ -1,5 +1,5 @@
 import express from "express";
-import { editProductsController } from "../controllers/protectedProductsController.js";
+import { editProductsController } from "../controllers/editProductController.js";
 import { sellingItemsController, shoppingCartController } from "../controllers/shoppingCartController.js";
 import cookieParser from "cookie-parser";
 

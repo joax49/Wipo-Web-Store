@@ -40,11 +40,3 @@ export async function postProductsController(req: Request, res: Response) {
         res.status(401).send(err);
     }
 }
-
-export async function editProductsController(req: Request, res: Response) {
-    try {
-        
-    } catch (err) {
-        res.status(401).send({err});
-    }
-}

@@ -32,11 +32,4 @@ export async function postProductsController(req, res) {
         res.status(401).send(err);
     }
 }
-export async function editProductsController(req, res) {
-    try {
-    }
-    catch (err) {
-        res.status(401).send({ err });
-    }
-}
 //# sourceMappingURL=protectedProductsController.js.map
