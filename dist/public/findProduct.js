@@ -1,9 +1,12 @@
+const searchForm = document.getElementById('search-form');
 async function fetchProduct(name) {
     try {
-        const response = await fetch('http://localhost:3000//protectedProducts/editProducts', {
+        const response = await fetch('http://localhost:3000/protectedProducts/editProducts', {
             method: "put",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({ "productName": name }),
-            headers: { "Content-type": "application/json" }
         });
         if (!response.ok) {
             console.error("Couldn't find the product");
@@ -17,5 +20,16 @@ async function fetchProduct(name) {
         console.error(err);
     }
 }
+searchForm.addEventListener('submit', async (b) => {
+    b.preventDefault();
+    try {
+        const formData = new FormData(searchForm);
+        const productName = formData.get('productName');
+        fetchProduct(productName);
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
 export {};
 //# sourceMappingURL=findProduct.js.map
