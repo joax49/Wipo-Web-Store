@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styling/productEditorPage.css">
+        <link rel="stylesheet" href="styling/navBar.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <nav id="nav">
+            <ul id="nav__ul">
+                <li class="nav__item"><a href="http://localhost:3000" class="nav__link">Ver productos</a></li>
+                <li class="nav__item"><a href="http://localhost:3000/productInsertPage" class="nav__link">Añadir productos</a></li>
+                <li class="nav__item"><a href="http://localhost:3000/productEditorPage" class="nav__link">Editar productos</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div id="product-editor-block">
+                <input type="text" id="product-editor-block__search-bar">
+                <div id="product-editor-block__image-container"></div>
+                <label for="product-editor-block__name-editor">Nombre</label>
+                <input type="text" id="product-editor-block__name-editor">
+                <label for="product-editor-block__price-editor">Precio</label>
+                <input type="number" id="product-editor-block__price-editor">
+                <label for="product-editor-block__type-editor">Tipo</label>
+                <input type="text" id="product-editor-block__type-editor">
+                <label for="product-editor-block__subtype-editor">Sección</label>
+                <input type="text" id="product-editor-block__subtype-editor">
+                <label for="product-editor-block__quantity-editor">Cantidad</label>
+                <input type="number" id="product-editor-block__quantity-editor">
+            </div>
+        </main>
+    </body>
+</html>

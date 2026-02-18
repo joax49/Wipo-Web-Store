@@ -45,8 +45,11 @@ app.use(cors({
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
-app.get('/productEditor', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'productEditor.html'));
+app.get('/productInsertPage', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'productInsertPage.html'));
+});
+app.get('/productEditorPage', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'productEditorPage.html'));
 });
 app.post('/protectedProducts/postProducts', upload.single('image'), postProductsController);
 app.use('/products', productsRouter);
