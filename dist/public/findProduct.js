@@ -1,4 +1,9 @@
 const searchForm = document.getElementById('search-form');
+const nameEditInput = document.getElementById('edit-form__name-editor');
+const priceEditInput = document.getElementById('edit-form__price-editor');
+const typeEditInput = document.getElementById('edit-form__type-editor');
+const subtypeEditInput = document.getElementById('edit-form__subtype-editor');
+const quantityEditInput = document.getElementById('edit-form__quantity-editor');
 async function fetchProduct(name) {
     try {
         const response = await fetch('http://localhost:3000/protectedProducts/editProducts', {
@@ -13,7 +18,7 @@ async function fetchProduct(name) {
         }
         else {
             const data = await response.json();
-            console.log(data);
+            return data;
         }
     }
     catch (err) {
@@ -25,7 +30,12 @@ searchForm.addEventListener('submit', async (b) => {
     try {
         const formData = new FormData(searchForm);
         const productName = formData.get('productName');
-        fetchProduct(productName);
+        const data = await fetchProduct(productName);
+        nameEditInput.value = data.name;
+        priceEditInput.value = data.price;
+        typeEditInput.value = data.type;
+        subtypeEditInput.value = data.subtype;
+        quantityEditInput.value = data.amount;
     }
     catch (err) {
         console.error(err);
