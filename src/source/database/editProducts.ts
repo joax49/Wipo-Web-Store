@@ -8,3 +8,10 @@ export async function reduceAmount(products:string[]) {
     }
     
 }
+
+export async function editData(id:number, name:string, price:number, type:string, subtype:string, amount:number) {
+    await pool.query(`
+        UPDATE products SET name = $1, price = $2, type = $3, subtype = $4, amount = $5
+        WHERE id = $6
+        `, [name, price, type, subtype, amount, id])
+}

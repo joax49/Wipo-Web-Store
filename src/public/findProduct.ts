@@ -2,6 +2,7 @@ import { json } from "express";
 
 const searchForm = document.getElementById('search-form') as HTMLFormElement;
 
+const idEditInput = document.getElementById('edit-form__id-editor') as HTMLInputElement;
 const nameEditInput = document.getElementById('edit-form__name-editor') as HTMLInputElement;
 const priceEditInput = document.getElementById('edit-form__price-editor') as HTMLInputElement;
 const typeEditInput = document.getElementById('edit-form__type-editor') as HTMLInputElement;
@@ -11,9 +12,9 @@ const quantityEditInput = document.getElementById('edit-form__quantity-editor') 
 async function fetchProduct(name:string) {
     try {
 
-        const response = await fetch('http://localhost:3000/protectedProducts/editProducts',
+        const response = await fetch('http://localhost:3000/products/searchProduct',
             {
-                method: "put",
+                method: "post",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -26,7 +27,7 @@ async function fetchProduct(name:string) {
 
         else {
             const data = await response.json();
-            return data
+            return data;
         }
     } catch (err) {
         console.error(err);
@@ -43,6 +44,7 @@ searchForm.addEventListener('submit', async (b) =>  {
 
         const data = await fetchProduct(productName)
 
+        idEditInput.value = data.id;
         nameEditInput.value = data.name;
         priceEditInput.value = data.price;
         typeEditInput.value = data.type;

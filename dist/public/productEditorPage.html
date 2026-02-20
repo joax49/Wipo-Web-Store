@@ -23,20 +23,22 @@
                 </form>
                 <form id="edit-form">
                     <div id="edit-form__image-container"></div>
+                    <input type="text" id="edit-form__id-editor" name="id" hidden="true">
                     <label for="edit-form__name-editor">Nombre</label>
-                    <input type="text" id="edit-form__name-editor" required>
+                    <input type="text" id="edit-form__name-editor" name="name" required>
                     <label for="edit-form__price-editor">Precio</label>
-                    <input type="number" id="edit-form__price-editor" min="0" required>
+                    <input type="number" id="edit-form__price-editor" min="0" name="price" required>
                     <label for="edit-form__type-editor">Tipo</label>
-                    <input type="text" id="edit-form__type-editor" required>
+                    <input type="text" id="edit-form__type-editor" name="type" required>
                     <label for="edit-form__subtype-editor">Sección</label>
-                    <input type="text" id="edit-form__subtype-editor" required>
+                    <input type="text" id="edit-form__subtype-editor" name="subtype" required>
                     <label for="edit-form__quantity-editor">Cantidad</label>
-                    <input type="number" id="edit-form__quantity-editor" min="0" required>
+                    <input type="number" id="edit-form__quantity-editor" min="0" name="amount" required>
                     <input type="submit">
                 </form>
             </div>
         </main>
         <script type="module" src="findProduct.js"></script>
+        <script type="module" src="editProduct.js"></script>
     </body>
 </html>

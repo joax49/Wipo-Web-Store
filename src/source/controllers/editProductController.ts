@@ -1,22 +1,15 @@
 import { Request, Response } from "express";
-import { searchProductByName } from "../database/searchProduct.js";
+import { editData } from "../database/editProducts.js";
 
 export async function editProductsController(req: Request, res: Response) {
     try {
-        const { productName } = req.body;
+        console.log(req.body)
 
-        if(!productName || typeof productName !=="string") {
-            return res.status(400).json({ error: "Invalid product name" });
-        }
+        const { id, name, price, type, subtype, amount } = req.body;
+        editData(id, name, price, type, subtype, amount);
 
-        const product = await searchProductByName(productName);
-
-        if (!product) {
-            return res.status(404).json({ error: "Product not found" });
-        }
-
-        res.status(200).json(product);
+        res.status(200).json({ message: "Product updated" });
     } catch (err) {
-        res.status(401).send({err});
+        console.error(err)
     }
 }
