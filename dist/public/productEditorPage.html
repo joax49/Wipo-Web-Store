@@ -16,7 +16,7 @@
             </ul>
         </nav>
         <main>
-            <div id="product-editor-block">
+            <div id="product-editor-block" class="form_container">
                 <form id="search-form">
                     <label for="search-form__product-name-input">Buscar Producto</label>
                     <input type="text" id="search-form__product-name-input" name="productName" class="non-submit">
@@ -36,6 +36,14 @@
                     <label for="edit-form__quantity-editor">Cantidad</label>
                     <input type="number" id="edit-form__quantity-editor" min="0" name="amount" class="non-submit" required>
                     <input type="submit" class="submit">
+                </form>
+            </div>
+            <div id="price-editor-block" class="form_container">
+                <form id="price-edit-form">
+                    <input type="number" name="old-floor" required>
+                    <input type="number" name="old-roof" required>
+                    <input type="text" name="type">
+                    <input type="number" name="new-price" required>
                 </form>
             </div>
         </main>

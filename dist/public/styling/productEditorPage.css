@@ -14,7 +14,7 @@ main {
     align-items: center;
 }
 
-#product-editor-block {
+.form_container {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -38,7 +38,7 @@ main {
     background-color: #d2b48c;
 }
 
-#search-form, #edit-form {
+form {
     display: flex;
     flex-direction: column;
 }
