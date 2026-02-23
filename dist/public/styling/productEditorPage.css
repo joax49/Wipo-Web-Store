@@ -3,4 +3,50 @@ body {
     margin: 0;
     justify-content: center;
     font-family: sans-serif;
+    background-color: #f5f5dc;
+}
+
+main {
+    margin: 4vh 0;
+    gap: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#product-editor-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 40vw;
+    background-color: #9d825d;
+    padding: 12px;
+    border: 1px solid #000;
+}
+
+.non-submit {
+    height: 2vh;
+    background-color: #f5f5dc;
+}
+
+.submit {
+    border: none;
+    background-color: #e4d5b4;
+}
+
+.submit:hover {
+    background-color: #d2b48c;
+}
+
+#search-form, #edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#search-form {
+    font-size: 0.95em;
+}
+
+#edit-form {
+    font-size: 0.8em;
 }

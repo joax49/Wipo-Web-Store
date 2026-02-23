@@ -18,23 +18,24 @@
         <main>
             <div id="product-editor-block">
                 <form id="search-form">
-                    <input type="text" id="search-form__product-name-input" name="productName">
-                    <input type="submit">
+                    <label for="search-form__product-name-input">Buscar Producto</label>
+                    <input type="text" id="search-form__product-name-input" name="productName" class="non-submit">
+                    <input type="submit" value="Buscar" class="submit">
                 </form>
                 <form id="edit-form">
                     <div id="edit-form__image-container"></div>
                     <input type="text" id="edit-form__id-editor" name="id" hidden="true">
                     <label for="edit-form__name-editor">Nombre</label>
-                    <input type="text" id="edit-form__name-editor" name="name" required>
+                    <input type="text" id="edit-form__name-editor" name="name" class="non-submit" required>
                     <label for="edit-form__price-editor">Precio</label>
-                    <input type="number" id="edit-form__price-editor" min="0" name="price" required>
+                    <input type="number" id="edit-form__price-editor" min="0" name="price" class="non-submit" required>
                     <label for="edit-form__type-editor">Tipo</label>
-                    <input type="text" id="edit-form__type-editor" name="type" required>
+                    <input type="text" id="edit-form__type-editor" name="type" class="non-submit" required>
                     <label for="edit-form__subtype-editor">Sección</label>
-                    <input type="text" id="edit-form__subtype-editor" name="subtype" required>
+                    <input type="text" id="edit-form__subtype-editor" name="subtype" class="non-submit" required>
                     <label for="edit-form__quantity-editor">Cantidad</label>
-                    <input type="number" id="edit-form__quantity-editor" min="0" name="amount" required>
-                    <input type="submit">
+                    <input type="number" id="edit-form__quantity-editor" min="0" name="amount" class="non-submit" required>
+                    <input type="submit" class="submit">
                 </form>
             </div>
         </main>
