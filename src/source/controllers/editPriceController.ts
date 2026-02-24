@@ -6,10 +6,12 @@ export async function editPriceController(req: Request, res: Response) {
         const {oldFloor, oldRoof, newPrice, type} = req.body;
 
         if(typeof oldFloor === "number" && typeof oldRoof === "number" && typeof newPrice === "number" && typeof type === "string") {
-            editPrices(oldFloor, oldRoof, newPrice, type)
+            await editPrices(oldFloor, oldRoof, newPrice, type)
 
-            res.status(200).json({ message: "Product updated" });
+            return res.status(200).json({ message: "Product updated" });
         }
+
+        return res.status(400).json({ message: "Invalid input types" });
     } catch (err) {
         console.error(err)
     }

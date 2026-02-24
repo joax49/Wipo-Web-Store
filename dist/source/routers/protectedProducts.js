@@ -9,5 +9,5 @@ protectedProductsRouter.use(cookieParser());
 protectedProductsRouter.post('/addToCart', shoppingCartController);
 protectedProductsRouter.post('/sellItems', sellingItemsController);
 protectedProductsRouter.put('/editProducts', editProductsController);
-protectedProductsRouter.put('/editPrice', editPriceController);
+protectedProductsRouter.put('/editPrices', editPriceController);
 //# sourceMappingURL=protectedProducts.js.map

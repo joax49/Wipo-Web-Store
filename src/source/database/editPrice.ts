@@ -11,7 +11,7 @@ export async function editPrices(oldFloorPrice:number, oldRoofPrice:number, newP
     else {
         await pool.query(`
         UPDATE products SET price = $1
-        WHERE price > $2 AND price < $3
+        WHERE price >= $2 AND price <= $3
         `, [newPrice, oldFloorPrice, oldRoofPrice])
     }
 }
