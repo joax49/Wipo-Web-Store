@@ -1,10 +1,10 @@
-const editForm = document.getElementById('edit-form');
-editForm.addEventListener('submit', async (b) => {
+const editPriceForm = document.getElementById('price-edit-form');
+editPriceForm.addEventListener('submit', async (b) => {
     b.preventDefault();
     try {
-        const formData = new FormData(editForm);
+        const formData = new FormData(editPriceForm);
         const data = Object.fromEntries(formData.entries());
-        const response = await fetch('http://localhost:3000/protectedProducts/editProducts', {
+        const response = await fetch('http://localhost:3000/protectedProducts/editPrices', {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -12,11 +12,11 @@ editForm.addEventListener('submit', async (b) => {
             body: JSON.stringify(data)
         });
         if (response.ok)
-            editForm.reset();
+            editPriceForm.reset();
     }
     catch (err) {
         console.error(err);
     }
 });
 export {};
-//# sourceMappingURL=editProduct.js.map
+//# sourceMappingURL=editPrices.js.map

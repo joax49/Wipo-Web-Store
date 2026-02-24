@@ -40,14 +40,16 @@
             </div>
             <div id="price-editor-block" class="form_container">
                 <form id="price-edit-form">
-                    <input type="number" name="oldFloor" required>
-                    <input type="number" name="oldRoof" required>
-                    <input type="text" name="type">
-                    <input type="number" name="newPrice" required>
+                    <input type="number" name="oldFloor" placeholder="Desde" required>
+                    <input type="number" name="oldRoof" placeholder="Hasta" required>
+                    <input type="text" name="type" placeholder="Tipo">
+                    <input type="number" name="newPrice" placeholder="Nuevo precio" required>
+                    <input type="submit" class="submit">
                 </form>
             </div>
         </main>
         <script type="module" src="findProduct.js"></script>
         <script type="module" src="editProduct.js"></script>
+        <script type="module" src="editPrices.js"></script>
     </body>
 </html>

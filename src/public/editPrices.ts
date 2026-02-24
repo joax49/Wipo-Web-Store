@@ -1,14 +1,14 @@
-const editForm = document.getElementById('edit-form') as HTMLFormElement;
+const editPriceForm = document.getElementById('price-edit-form') as HTMLFormElement;
 
-editForm.addEventListener('submit', async (b) => {
+editPriceForm.addEventListener('submit', async (b) => {
     b.preventDefault();
 
     try {
-        const formData = new FormData(editForm);
+        const formData = new FormData(editPriceForm);
 
         const data = Object.fromEntries(formData.entries());
 
-        const response = await fetch('http://localhost:3000/protectedProducts/editProducts',
+        const response = await fetch('http://localhost:3000/protectedProducts/editPrices',
             {
                 method: "PUT",
                 headers: {
@@ -18,7 +18,7 @@ editForm.addEventListener('submit', async (b) => {
             }
         )
 
-        if(response.ok) editForm.reset()
+        if(response.ok) editPriceForm.reset()
     } catch (err) {
         console.error(err)
     }
