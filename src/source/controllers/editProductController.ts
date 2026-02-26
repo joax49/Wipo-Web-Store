@@ -6,7 +6,7 @@ export async function editProductsController(req: Request, res: Response) {
         console.log(req.body)
 
         const { id, name, price, type, subtype, amount } = req.body;
-        editData(id, name, price, type, subtype, amount);
+        editData(id, name?.trim(), price, type?.trim(), subtype?.trim(), amount);
 
         res.status(200).json({ message: "Product updated" });
     } catch (err) {

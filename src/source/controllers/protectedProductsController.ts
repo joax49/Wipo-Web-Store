@@ -33,7 +33,7 @@ export async function postProductsController(req: Request, res: Response) {
                 throw new Error("The product's price and amount must be a number")
             }
             
-            insertProduct(productName, productPrice, productType, productSubtype, productAmount, image ? image.originalname : null);
+            insertProduct(productName.trim(), productPrice, productType?.trim(), productSubtype?.trim(), productAmount, image ? image.originalname : null);
             res.status(201).send("Product added correctly")
         }
     } catch (err) {

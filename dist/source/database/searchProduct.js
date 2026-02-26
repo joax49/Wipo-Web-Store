@@ -9,7 +9,7 @@ export async function searchProductById(productId) {
 //A function for searching a specific product by name
 export async function searchProductByName(productName) {
     const products = await pool.query(`
-        SELECT * FROM products WHERE name = $1
+        SELECT * FROM products WHERE name ILIKE $1
         `, [productName]);
     return products.rows[0];
 }
