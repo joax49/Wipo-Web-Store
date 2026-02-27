@@ -3,7 +3,6 @@ import { pool } from "./main.js";
 //Function for adding products into the database
 export async function insertProduct(productName: string, productPrice: number, productType: (string | null),
 productSubtype: (string | null), productAmount: number, productImagePath: (string | null)) {
-
     await pool.query(`
         INSERT INTO products
         (name, price, type, subtype, amount, imagePath)
