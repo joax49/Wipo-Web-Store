@@ -8,6 +8,7 @@ import { protectedProductsRouter } from './routers/protectedProducts.js';
 import { authRouter } from './routers/authRouter.js';
 import { postProductsController } from './controllers/protectedProductsController.js';
 import cookieParser from 'cookie-parser';
+import { salesRouter } from './routers/salesRouter.js';
 
 const app = express();
 const PORT = 3000;
@@ -68,5 +69,6 @@ app.post('/protectedProducts/postProducts', upload.single('image'), postProducts
 app.use('/products', productsRouter);
 app.use('/protectedProducts', protectedProductsRouter);
 app.use('/auth', authRouter);
+app.use('/sales', salesRouter)
 
 app.listen(PORT, 'localhost', () => console.log(`You are listening to port ${PORT}`));
