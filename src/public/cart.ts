@@ -50,7 +50,7 @@ export async function handleAddToCart(productId: number) {
     try {
 
         // Fetching the searched item
-        const response = await fetch('https://localhost:3000/protectedProducts/addToCart',
+        const response = await fetch('http://localhost:3000/protectedProducts/addToCart',
             {
                 method: "POST",
                 headers: {

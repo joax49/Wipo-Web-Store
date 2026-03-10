@@ -21,7 +21,6 @@ export class CartService {
         }
         try {
             const cart = this.getAll();
-            let isItemInCart = false;
             for (let i = 0; i < cart.length; i++) {
                 if (cart[i].id === newItem.id) {
                     cart[i].amount += 1;

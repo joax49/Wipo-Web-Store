@@ -9,7 +9,8 @@ async function fillSalesTable() {
             throw new Error("Could not fetch resource")
         }
 
-        const sales = await response.json();
+        const data = await response.json();
+        const sales = data.sales;
 
         for (let i = 0; i < sales.length; i++) {
             const sale = sales[i];
@@ -19,7 +20,7 @@ async function fillSalesTable() {
             const idElement = document.createElement('td');
             idElement.innerText = String(sale.id);
             const productNameElement = document.createElement('td');
-            productNameElement.innerText = sale.productName;
+            productNameElement.innerText = sale.name;
             const amountElement = document.createElement('td');
             amountElement.innerText = String(sale.amount);
             const priceElement = document.createElement('td');
@@ -42,3 +43,5 @@ async function fillSalesTable() {
     }
 
 }
+
+document.addEventListener('DOMContentLoaded', () => fillSalesTable())

@@ -46,7 +46,7 @@ app.use(express.json({"limit": '50mb'}));
 app.use(express.urlencoded({"limit": "50mb", "extended": true}))
 
 app.use(cors({
-    origin: "https://wipo.jxmtz.xyz", 
+    origin: "http://localhost:3000", 
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // if using cookies/auth headers
 }));
@@ -62,6 +62,10 @@ app.get('/productInsertPage', (req, res) => {
 
 app.get('/productEditorPage', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'productEditorPage.html'))
+})
+
+app.get('/salesDisplayPage', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'salesDisplayPage.html'))
 })
 
 app.post('/protectedProducts/postProducts', upload.single('image'), postProductsController);
