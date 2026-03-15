@@ -19,6 +19,7 @@
         <main>
             <div id="product-editor-block" class="form_container">
                 <form id="search-form">
+                    <h3>Editar producto</h3>
                     <label for="search-form__product-name-input">Buscar Producto</label>
                     <input type="text" id="search-form__product-name-input" name="productName" class="non-submit" placeholder="Buscar producto">
                     <input type="submit" value="Buscar" class="submit">
@@ -41,10 +42,15 @@
             </div>
             <div id="price-editor-block" class="form_container">
                 <form id="price-edit-form">
-                    <input type="number" name="oldFloor" placeholder="Desde" required>
-                    <input type="number" name="oldRoof" placeholder="Hasta" required>
-                    <input type="text" name="type" placeholder="Tipo">
-                    <input type="number" name="newPrice" placeholder="Nuevo precio" required>
+                    <h3>Cambiar Precios</h3>
+                    <label for="price-edit-form__min-price">Desde</label>
+                    <input type="number" id="price-edit-form__min-price" class="non-submit" name="oldFloor" required>
+                    <label for="price-edit-form__max-price">Hasta</label>
+                    <input type="number" id="price-edit-form__max-price" class="non-submit" name="oldRoof" required>
+                    <label for="price-edit-form__type">Tipo</label>
+                    <input type="text" id="price-edit-form__type" class="non-submit" name="type">
+                    <label for="price-edit-form__new-price">Precio nuevo</label>
+                    <input type="number" id="price-edit-form__new-price" class="non-submit" name="newPrice" required>
                     <input type="submit" class="submit">
                 </form>
             </div>

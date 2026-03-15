@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styling/productInsertPage.css">
         <link rel="stylesheet" href="styling/navBar.css">
-        <link rel="stylesheet" href="styling/productInsertBlock.css">
         <link rel="stylesheet" href="styling/modalWindow.css">
-        <link rel="stylesheet" href="styling/cartBlock.css">
         <title>Document</title>
     </head>
     <body>
@@ -36,16 +34,18 @@
             <div>
                 <h3 id="next-id-indicator"></h3>
             </div>
-            <form id="newProduct" enctype="multipart/form-datas">
-                <label for="productName">Añadir producto</label>
-                <input type="text" id="productName" placeholder="Producto" name="productName" required>
-                <input type="number" id="productPrice" placeholder="Precio" name="productPrice" required>
-                <input type="text" id="productType" placeholder="Type" name="productType">
-                <input type="text" id="productSubtype" placeholder="Subtype" name="productSubtype">
-                <input type="number" id="productAmount" placeholder="Amount" name="productAmount" required>
-                <input type="file" id="productFile" name="image">
-                <input type="submit" id="submitProduct">
-            </form>
+            <div class="form_container">
+                <form id="newProduct" enctype="multipart/form-datas">
+                    <label for="productName">Añadir producto</label>
+                    <input type="text" id="productName" placeholder="Producto" name="productName" class="non-submit" required>
+                    <input type="number" id="productPrice" placeholder="Precio" name="productPrice" class="non-submit" required>
+                    <input type="text" id="productType" placeholder="Type" name="productType" class="non-submit" required>
+                    <input type="text" id="productSubtype" placeholder="Subtype" name="productSubtype" class="non-submit" required>
+                    <input type="number" id="productAmount" placeholder="Amount" name="productAmount" class="non-submit" required>
+                    <input type="file" id="productFile" name="image" class="image-input" required>
+                    <input type="submit" id="submitProduct" class="submit">
+                </form>
+            </div>
         </main>
         <script type="module" src="modalWindow.js"></script>
         <script type="module" src="productForm.js"></script>

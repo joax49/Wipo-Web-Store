@@ -30,6 +30,7 @@ main {
 }
 
 .submit {
+    border: solid 1px #000;
     border: none;
     background-color: #e4d5b4;
 }
@@ -43,10 +44,6 @@ form {
     flex-direction: column;
 }
 
-#search-form {
-    font-size: 0.95em;
-}
-
-#edit-form {
+#edit-form, #price-edit-form, #search-form {
     font-size: 0.8em;
 }

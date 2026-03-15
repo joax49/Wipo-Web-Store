@@ -1,0 +1,28 @@
+body {
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    font-family: sans-serif;
+    background-color: #f5f5dc;
+}
+
+main {
+    margin: 4vh 0;
+    gap: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table, th, td {
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #d2b48c;
+}
+
+td {
+    background-color: #e4d5b4;
+}
