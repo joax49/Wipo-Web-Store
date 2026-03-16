@@ -1,7 +1,7 @@
 const form = document.getElementById("newProduct") as HTMLFormElement;
 
 const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
-const nextIdIndicator = document.getElementById('next-id-indicator') as HTMLHeadElement;
+const lastIdIndicator = document.getElementById('last-id-indicator') as HTMLHeadElement;
 
 async function loadNextId() {
     try {
@@ -17,7 +17,7 @@ async function loadNextId() {
         else {
             const id = await response.json();
 
-            nextIdIndicator.innerText = id.id.toString();
+            lastIdIndicator.innerText = "Ultimo id:" + id.id.toString();
         }
     } catch (err) {
         console.error(err)
