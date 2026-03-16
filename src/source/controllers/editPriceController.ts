@@ -5,11 +5,13 @@ export async function editPriceController(req: Request, res: Response) {
     try {
         const oldFloor = Number(req.body.oldFloor);
         const oldRoof = Number(req.body.oldRoof);
-        const newPrice = Number(req.body.newPrice);
+        const percentage = Number(req.body.percentage);
         const type = req.body.type?.trim() || null;
 
-        if (!isNaN(oldFloor) && !isNaN(oldRoof) && !isNaN(newPrice)) {
-            await editPrices(oldFloor, oldRoof, newPrice, type);
+        if (!isNaN(oldFloor) && !isNaN(oldRoof) && !isNaN(percentage)) {
+            const multiplier = 1 + (percentage / 100);
+
+            await editPrices(oldFloor, oldRoof, multiplier, type);
             return res.status(200).json({ message: "Product updated" });
         }
 

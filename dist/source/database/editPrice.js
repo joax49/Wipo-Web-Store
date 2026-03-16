@@ -1,16 +1,16 @@
 import { pool } from "./main.js";
-export async function editPrices(oldFloorPrice, oldRoofPrice, newPrice, type) {
+export async function editPrices(oldFloorPrice, oldRoofPrice, multiplier, type) {
     if (typeof type === "string") {
         await pool.query(`
-        UPDATE products SET price = $1
+        UPDATE products SET price = ROUND(price * $1::numeric)::integer
         WHERE price > $2 AND price < $3 AND type ILIKE $4
-        `, [newPrice, oldFloorPrice, oldRoofPrice, type]);
+        `, [multiplier, oldFloorPrice, oldRoofPrice, type]);
     }
     else {
         await pool.query(`
-        UPDATE products SET price = $1
+        UPDATE products SET price = ROUND(price * $1::numeric)::integer
         WHERE price >= $2 AND price <= $3
-        `, [newPrice, oldFloorPrice, oldRoofPrice]);
+        `, [multiplier, oldFloorPrice, oldRoofPrice]);
     }
 }
 //# sourceMappingURL=editPrice.js.map
