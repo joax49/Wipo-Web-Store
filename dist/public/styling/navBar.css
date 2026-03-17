@@ -1,20 +1,19 @@
 #nav {
     background-color: #674f2d;
-    height: 30px;
 }
 
 #nav__ul {
     margin: 0;
-    height: 100%;
+    padding: 0;
     display: flex;
+    flex-wrap: nowrap; /* keep everything in one line */
 }
 
 .nav__item {
+    flex: 1; /* each item shares space equally */
     text-align: center;
-    padding: 6px 0;
-    width: 140px;
+    padding: 8px 4px;
     list-style: none;
-    
 }
 
 .nav__item:hover {
@@ -24,4 +23,6 @@
 .nav__link {
     color: #000;
     text-decoration: none;
+    display: block;
+    font-size: clamp(12px, 2vw, 16px); /* shrink text on small screens */
 }
