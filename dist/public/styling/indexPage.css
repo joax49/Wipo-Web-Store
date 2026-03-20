@@ -115,13 +115,13 @@ main > form, main > table {
     box-sizing: border-box;
 }
 
-#cart button {
+#cart__buy-button {
     width: 100%;
     border: none;
     background-color: #e4d5b4;
 }
 
-#cart button:hover {
+#cart__buy-button:hover {
     background-color: #d2b48c;
 }
 

@@ -1,3 +1,5 @@
+import { openUserAuthWindow } from "./openUserAuth.js";
+
 const form = document.getElementById("newProduct") as HTMLFormElement;
 
 const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
@@ -39,7 +41,7 @@ form.addEventListener("submit", async (b) => {
         )
 
         if(!response.ok) {
-            modalWindow.showModal()
+            openUserAuthWindow()
         }
 
         else {

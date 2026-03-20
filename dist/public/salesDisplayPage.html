@@ -6,15 +6,29 @@
         <title>Document</title>
         <link rel="stylesheet" href="styling/navBar.css">
         <link rel="stylesheet" href="styling/salesDisplayPage.css">
+        <link rel="stylesheet" href="styling/modalWindow.css">
     </head>
     <body>
+        <dialog id="userAuthWindow">
+            <div id="modal__content">
+                <h2 id="modal__title">Inserte el código de administrador</h2>
+                <h4 id="modal__answer"></h4>
+                <form id="modal__form">
+                    <input id="modal__password" type="text" required>
+                    <input id="modal__submit" type="submit">
+                </form>
+                <form method="dialog">
+                    <button id="modal__close-button">X</button>
+                </form>
+            </div>
+        </dialog>
         <nav id="nav">
             <ul id="nav__ul">
                 <li class="nav__item"><a href="http://localhost:3000" class="nav__link">Ver productos</a></li>
                 <li class="nav__item"><a href="http://localhost:3000/productInsertPage" class="nav__link">Añadir productos</a></li>
                 <li class="nav__item"><a href="http://localhost:3000/productEditorPage" class="nav__link">Editar productos</a></li>
                 <li class="nav__item"><a href="http://localhost:3000/salesDisplayPage" class="nav__link">Ver ventas</a></li>
-                <li class="nav__item"><a href="" class="nav__link">Log in</a></li>
+                <button class="nav__item" id="nav__show_log_in">Log in</button>
             </ul>
         </nav>
         <main>
@@ -33,6 +47,7 @@
             </table>
         </main>
         <script type="module" src="fillSalesTable.js"></script>
-        <script type="module" src="modalWindow.js"></script>
+        <script type="module" src="userAuth.js"></script>
+        <script type="module" src="openUserAuth.js"></script>
     </body>
 </html>

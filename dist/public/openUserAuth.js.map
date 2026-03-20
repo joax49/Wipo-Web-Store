@@ -1,0 +1,1 @@
+{"version":3,"file":"openUserAuth.js","sourceRoot":"","sources":["../../src/public/openUserAuth.ts"],"names":[],"mappings":"AAAA,MAAM,cAAc,GAAG,QAAQ,CAAC,cAAc,CAAC,gBAAgB,CAAsB,CAAC;AACtF,MAAM,WAAW,GAAG,QAAQ,CAAC,cAAc,CAAC,kBAAkB,CAAsB,CAAC;AAErF,MAAM,UAAU,kBAAkB;IAC9B,cAAc,CAAC,SAAS,EAAE,CAAA;AAC9B,CAAC;AAED,WAAW,CAAC,gBAAgB,CAAC,OAAO,EAAE,GAAG,EAAE,CAAC,kBAAkB,EAAE,CAAC,CAAA"}

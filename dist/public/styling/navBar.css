@@ -16,6 +16,16 @@
     list-style: none;
 }
 
+#nav__show_log_in {
+    border: none;
+    background-color: #674f2d;
+    font-size: clamp(12px, 2vw, 16px)
+}
+
+#nav__show_log_in:hover {
+    background-color: #745831;
+}
+
 .nav__item:hover {
     background-color: #745831;
 }

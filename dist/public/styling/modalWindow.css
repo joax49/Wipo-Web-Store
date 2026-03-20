@@ -1,7 +1,18 @@
 dialog {
-    background-color: #0009;
-    width: 100vw;
-    height: 100vh;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: none;
+    padding: 0;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
 }
 
 #modal__content {

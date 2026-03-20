@@ -1,3 +1,4 @@
+import { openUserAuthWindow } from "./openUserAuth.js";
 const form = document.getElementById("newProduct");
 const modalWindow = document.querySelector('dialog');
 const lastIdIndicator = document.getElementById('last-id-indicator');
@@ -28,7 +29,7 @@ form.addEventListener("submit", async (b) => {
             credentials: "include"
         });
         if (!response.ok) {
-            modalWindow.showModal();
+            openUserAuthWindow();
         }
         else {
             form.reset();
@@ -39,5 +40,4 @@ form.addEventListener("submit", async (b) => {
     }
 });
 document.addEventListener("DOMContentLoaded", (e) => loadNextId());
-export {};
 //# sourceMappingURL=productForm.js.map
