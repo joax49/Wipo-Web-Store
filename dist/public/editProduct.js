@@ -1,3 +1,4 @@
+import { openUserAuthWindow } from "./openUserAuth.js";
 const editForm = document.getElementById('edit-form');
 editForm.addEventListener('submit', async (b) => {
     b.preventDefault();
@@ -6,11 +7,15 @@ editForm.addEventListener('submit', async (b) => {
         const data = Object.fromEntries(formData.entries());
         const response = await fetch('http://localhost:3000/protectedProducts/editProducts', {
             method: "PUT",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
         });
+        if (!response.ok) {
+            openUserAuthWindow();
+        }
         if (response.ok)
             editForm.reset();
     }
@@ -18,5 +23,4 @@ editForm.addEventListener('submit', async (b) => {
         console.error(err);
     }
 });
-export {};
 //# sourceMappingURL=editProduct.js.map

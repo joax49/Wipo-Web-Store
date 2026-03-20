@@ -1,3 +1,5 @@
+import { openUserAuthWindow } from "./openUserAuth.js";
+
 const editForm = document.getElementById('edit-form') as HTMLFormElement;
 
 editForm.addEventListener('submit', async (b) => {
@@ -11,12 +13,17 @@ editForm.addEventListener('submit', async (b) => {
         const response = await fetch('http://localhost:3000/protectedProducts/editProducts',
             {
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
             }
         )
+
+        if(!response.ok) {
+            openUserAuthWindow();
+        }
 
         if(response.ok) editForm.reset()
     } catch (err) {

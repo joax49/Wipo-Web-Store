@@ -2,6 +2,9 @@ import { searchProductByName } from "../database/searchProduct.js";
 export async function searchProductController(req, res) {
     try {
         const { productName } = req.body;
+        if (!req.cookies.access_token) {
+            throw new Error("Invalid access: Must provide token");
+        }
         if (!productName || typeof productName !== "string") {
             return res.status(400).json({ error: "Invalid product name" });
         }

@@ -1,4 +1,5 @@
 import { json } from "express";
+import { openUserAuthWindow } from "./openUserAuth.js";
 
 const searchForm = document.getElementById('search-form') as HTMLFormElement;
 
@@ -15,6 +16,7 @@ async function fetchProduct(name:string) {
         const response = await fetch('http://localhost:3000/products/searchProduct',
             {
                 method: "post",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -22,7 +24,7 @@ async function fetchProduct(name:string) {
             })
 
         if(!response.ok) {
-            console.error("Couldn't find the product")
+            openUserAuthWindow()
         }
 
         else {

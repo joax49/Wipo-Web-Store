@@ -1,3 +1,4 @@
+import { openUserAuthWindow } from "./openUserAuth.js";
 const searchForm = document.getElementById('search-form');
 const idEditInput = document.getElementById('edit-form__id-editor');
 const nameEditInput = document.getElementById('edit-form__name-editor');
@@ -9,13 +10,14 @@ async function fetchProduct(name) {
     try {
         const response = await fetch('http://localhost:3000/products/searchProduct', {
             method: "post",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ "productName": name }),
         });
         if (!response.ok) {
-            console.error("Couldn't find the product");
+            openUserAuthWindow();
         }
         else {
             const data = await response.json();
@@ -43,5 +45,4 @@ searchForm.addEventListener('submit', async (b) => {
         console.error(err);
     }
 });
-export {};
 //# sourceMappingURL=findProduct.js.map

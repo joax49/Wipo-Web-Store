@@ -1,12 +1,19 @@
+import { openUserAuthWindow } from "./openUserAuth.js";
+
 const tableBody = document.querySelector('tbody') as HTMLTableSectionElement;
 
 async function fillSalesTable() {
     try {
         const fragment = document.createDocumentFragment();
-        const response = await fetch('http://localhost:3000/sales/allSales');
+        const response = await fetch('http://localhost:3000/sales/allSales', 
+            {
+                method: "GET",
+                credentials: "include"
+            }
+        );
 
         if (!response.ok) {
-            throw new Error("Could not fetch resource")
+            openUserAuthWindow();
         }
 
         const data = await response.json();
