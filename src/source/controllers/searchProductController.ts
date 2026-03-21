@@ -1,12 +1,17 @@
 import { Request, Response } from "express";
 import { searchProductByName } from "../database/searchProduct.js";
+import { AppError } from "../utils/appError.js";
 
 export async function searchProductController(req: Request, res: Response) {
     try {
         const { productName } = req.body;
 
         if (!req.cookies.access_token) {
-            throw new Error("Invalid access: Must provide token")
+            throw new AppError(
+                "NO_CREDENTIALS",
+                "Must provide access token",
+                401
+            );
         }
 
         if(!productName || typeof productName !=="string") {

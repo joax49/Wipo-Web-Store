@@ -1,6 +1,7 @@
 import { searchProductById } from "../database/searchProduct.js";
 import { sellProduct } from "../database/sellProducts.js";
 import { isCartItem } from "../database/typeCasting.js";
+import { AppError } from "../utils/appError.js";
 export async function shoppingCartController(req, res) {
     try {
         const { productId } = req.body;
@@ -24,7 +25,7 @@ export async function sellingItemsController(req, res) {
     try {
         const { items } = req.body;
         if (!req.cookies.access_token) {
-            throw new Error("Invalid access: Must provide token");
+            throw new AppError("NO_CREDENTIALS", "Must provide access token", 401);
         }
         // If "items" is not an array
         if (!Array.isArray(items)) {

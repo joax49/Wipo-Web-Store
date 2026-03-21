@@ -1,8 +1,9 @@
 import { getSales } from "../database/getSales.js";
+import { AppError } from "../utils/appError.js";
 export async function getSalesController(req, res) {
     try {
         if (!req.cookies.access_token) {
-            throw new Error("Invalid access: Must provide token");
+            throw new AppError("NO_CREDENTIALS", "Must provide access token", 401);
         }
         const allSales = await getSales();
         return res.status(201).json({ "sales": allSales });

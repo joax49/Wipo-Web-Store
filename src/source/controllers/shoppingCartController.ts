@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { searchProductById } from "../database/searchProduct.js";
 import { sellProduct } from "../database/sellProducts.js";
 import { CartItem, isCartItem } from "../database/typeCasting.js";
+import { AppError } from "../utils/appError.js";
 
 export async function shoppingCartController(req: Request, res: Response) {
     try {
@@ -31,7 +32,11 @@ export async function sellingItemsController(req: Request, res: Response) {
         const {items} = req.body;
 
         if (!req.cookies.access_token) {
-            throw new Error("Invalid access: Must provide token")
+            throw new AppError(
+                "NO_CREDENTIALS",
+                "Must provide access token",
+                401
+            );
         }
 
         // If "items" is not an array
