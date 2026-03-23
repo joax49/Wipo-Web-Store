@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { editPrices } from "../database/editPrice.js";
 import { AppError } from "../utils/appError.js";
 
-export async function editPriceController(req: Request, res: Response) {
+export async function editPriceController(req: Request, res: Response, next: NextFunction) {
     try {
         if (!req.cookies.access_token) {
             throw new AppError(
@@ -26,6 +26,6 @@ export async function editPriceController(req: Request, res: Response) {
 
         return res.status(400).json({ message: "Invalid input types" });
     } catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }

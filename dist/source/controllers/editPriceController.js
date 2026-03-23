@@ -1,6 +1,6 @@
 import { editPrices } from "../database/editPrice.js";
 import { AppError } from "../utils/appError.js";
-export async function editPriceController(req, res) {
+export async function editPriceController(req, res, next) {
     try {
         if (!req.cookies.access_token) {
             throw new AppError("NO_CREDENTIALS", "Must provide access token", 401);
@@ -17,7 +17,7 @@ export async function editPriceController(req, res) {
         return res.status(400).json({ message: "Invalid input types" });
     }
     catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }
 //# sourceMappingURL=editPriceController.js.map

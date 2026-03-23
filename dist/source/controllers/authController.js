@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-export async function authController(req, res) {
+export async function authController(req, res, next) {
     try {
         const { password } = req.body;
         if (password === process.env.ADMIN_KEY && typeof process.env.JWT_KEY === "string") {
@@ -18,7 +18,7 @@ export async function authController(req, res) {
         }
     }
     catch (err) {
-        console.log(err);
+        next(err);
     }
 }
 //# sourceMappingURL=authController.js.map

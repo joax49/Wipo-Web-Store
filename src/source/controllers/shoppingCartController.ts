@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { searchProductById } from "../database/searchProduct.js";
 import { sellProduct } from "../database/sellProducts.js";
 import { CartItem, isCartItem } from "../database/typeCasting.js";
 import { AppError } from "../utils/appError.js";
 
-export async function shoppingCartController(req: Request, res: Response) {
+export async function shoppingCartController(req: Request, res: Response, next: NextFunction) {
     try {
         const {productId} = req.body;
 
@@ -23,11 +23,11 @@ export async function shoppingCartController(req: Request, res: Response) {
 
         res.status(201).send(product);
     } catch(err) {
-        res.status(401).send(err);
+        next(err);
     }
 }
 
-export async function sellingItemsController(req: Request, res: Response) {
+export async function sellingItemsController(req: Request, res: Response, next: NextFunction) {
     try {
         const {items} = req.body;
 
@@ -56,6 +56,6 @@ export async function sellingItemsController(req: Request, res: Response) {
 
         res.status(201).send("Items sold correctly");
     } catch (err) {
-        res.status(500).json({error: "Server error"});
+        next(err);
     }
 }

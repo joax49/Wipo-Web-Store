@@ -1,5 +1,5 @@
 import { getProducts } from "../database/getProducts.js";
-export async function getProductsController(req, res) {
+export async function getProductsController(req, res, next) {
     try {
         //Getting the applied filters from the query params
         const { searchedProduct, floorPrice, roofPrice, searchedType, searchedSubtype } = req.query;
@@ -24,7 +24,7 @@ export async function getProductsController(req, res) {
     }
     catch (err) {
         console.log(err);
-        res.status(500).send({ error: err });
+        next(err);
     }
 }
 //# sourceMappingURL=productControllers.js.map

@@ -1,6 +1,6 @@
 import { editData } from "../database/editProducts.js";
 import { AppError } from "../utils/appError.js";
-export async function editProductsController(req, res) {
+export async function editProductsController(req, res, next) {
     try {
         if (!req.cookies.access_token) {
             throw new AppError("NO_CREDENTIALS", "Must provide access token", 401);
@@ -10,7 +10,7 @@ export async function editProductsController(req, res) {
         res.status(200).json({ message: "Product updated" });
     }
     catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }
 //# sourceMappingURL=editProductController.js.map

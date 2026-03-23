@@ -1,6 +1,6 @@
 import { searchProductByName } from "../database/searchProduct.js";
 import { AppError } from "../utils/appError.js";
-export async function searchProductController(req, res) {
+export async function searchProductController(req, res, next) {
     try {
         const { productName } = req.body;
         if (!req.cookies.access_token) {
@@ -16,7 +16,7 @@ export async function searchProductController(req, res) {
         res.status(200).json(product);
     }
     catch (err) {
-        res.status(401).send({ err });
+        next(err);
     }
 }
 //# sourceMappingURL=searchProductController.js.map

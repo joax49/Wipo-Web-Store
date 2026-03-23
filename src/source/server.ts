@@ -10,6 +10,7 @@ import { postProductsController } from './controllers/protectedProductsControlle
 import cookieParser from 'cookie-parser';
 import { salesRouter } from './routers/salesRouter.js';
 import { globalErrorHandler } from './utils/globalErrorHandler.js';
+import { asyncHandler } from "./utils/asyncHandler.js";
 
 const app = express();
 const PORT = 3000;
@@ -69,7 +70,7 @@ app.get('/salesDisplayPage', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'salesDisplayPage.html'))
 })
 
-app.post('/protectedProducts/postProducts', upload.single('image'), postProductsController);
+app.post('/protectedProducts/postProducts', upload.single('image'), asyncHandler(postProductsController));
 
 app.use('/products', productsRouter);
 app.use('/protectedProducts', protectedProductsRouter);

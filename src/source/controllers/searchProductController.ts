@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { searchProductByName } from "../database/searchProduct.js";
 import { AppError } from "../utils/appError.js";
 
-export async function searchProductController(req: Request, res: Response) {
+export async function searchProductController(req: Request, res: Response, next: NextFunction) {
     try {
         const { productName } = req.body;
 
@@ -26,6 +26,6 @@ export async function searchProductController(req: Request, res: Response) {
 
         res.status(200).json(product);
     } catch (err) {
-        res.status(401).send({err});
+        next(err);
     }
 }

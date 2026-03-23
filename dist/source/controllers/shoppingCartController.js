@@ -2,7 +2,7 @@ import { searchProductById } from "../database/searchProduct.js";
 import { sellProduct } from "../database/sellProducts.js";
 import { isCartItem } from "../database/typeCasting.js";
 import { AppError } from "../utils/appError.js";
-export async function shoppingCartController(req, res) {
+export async function shoppingCartController(req, res, next) {
     try {
         const { productId } = req.body;
         if (typeof productId !== "number") {
@@ -18,10 +18,10 @@ export async function shoppingCartController(req, res) {
         res.status(201).send(product);
     }
     catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }
-export async function sellingItemsController(req, res) {
+export async function sellingItemsController(req, res, next) {
     try {
         const { items } = req.body;
         if (!req.cookies.access_token) {
@@ -42,7 +42,7 @@ export async function sellingItemsController(req, res) {
         res.status(201).send("Items sold correctly");
     }
     catch (err) {
-        res.status(500).json({ error: "Server error" });
+        next(err);
     }
 }
 //# sourceMappingURL=shoppingCartController.js.map

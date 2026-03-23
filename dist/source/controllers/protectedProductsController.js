@@ -1,7 +1,7 @@
 import { insertProduct } from "../database/addProducts.js";
 import { isExistingProduct } from "../database/isExistingProduct.js";
 import { AppError } from "../utils/appError.js";
-export async function postProductsController(req, res) {
+export async function postProductsController(req, res, next) {
     try {
         {
             if (!req.cookies.access_token) {
@@ -34,7 +34,7 @@ export async function postProductsController(req, res) {
         }
     }
     catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }
 //# sourceMappingURL=protectedProductsController.js.map

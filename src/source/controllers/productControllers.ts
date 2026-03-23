@@ -1,7 +1,7 @@
-import { Request, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 import { getProducts} from "../database/getProducts.js"
 
-export async function getProductsController(req: Request, res: Response) {
+export async function getProductsController(req: Request, res: Response, next: NextFunction) {
     try {
 
         //Getting the applied filters from the query params
@@ -28,6 +28,6 @@ export async function getProductsController(req: Request, res: Response) {
         return res.status(200).send(allProducts)
     } catch (err) {
         console.log(err)
-        res.status(500).send({error: err})
+        next(err);
     }
 }

@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-export async function authController(req: Request, res: Response) {
+export async function authController(req: Request, res: Response, next: NextFunction) {
     try {
         const {password} = req.body;
 
@@ -22,6 +22,6 @@ export async function authController(req: Request, res: Response) {
             .send({token})
         }
     } catch(err) {
-        console.log(err)
+        next(err);
     }
 }

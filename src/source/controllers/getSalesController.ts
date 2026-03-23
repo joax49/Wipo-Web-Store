@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { getSales } from "../database/getSales.js";
 import { AppError } from "../utils/appError.js";
 
-export async function getSalesController(req: Request, res: Response) {
+export async function getSalesController(req: Request, res: Response, next: NextFunction) {
     try {
         if (!req.cookies.access_token) {
             throw new AppError(
@@ -15,6 +15,6 @@ export async function getSalesController(req: Request, res: Response) {
         const allSales = await getSales();
         return res.status(201).json({"sales":allSales})
     } catch(err) {
-        res.status(401).send(err);
+        next(err);
     }
 }

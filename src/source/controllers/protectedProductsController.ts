@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { insertProduct } from "../database/addProducts.js";
 import { isExistingProduct } from "../database/isExistingProduct.js";
 import { AppError } from "../utils/appError.js";
 
-export async function postProductsController(req: Request, res: Response) {
+export async function postProductsController(req: Request, res: Response, next: NextFunction) {
 
     try {
         {
@@ -59,6 +59,6 @@ export async function postProductsController(req: Request, res: Response) {
         });
     }
     } catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }

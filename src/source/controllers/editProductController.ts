@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { editData } from "../database/editProducts.js";
 import { AppError } from "../utils/appError.js";
 
-export async function editProductsController(req: Request, res: Response) {
+export async function editProductsController(req: Request, res: Response, next: NextFunction) {
     try {
         if (!req.cookies.access_token) {
             throw new AppError(
@@ -17,6 +17,6 @@ export async function editProductsController(req: Request, res: Response) {
 
         res.status(200).json({ message: "Product updated" });
     } catch (err) {
-        res.status(401).send(err);
+        next(err);
     }
 }

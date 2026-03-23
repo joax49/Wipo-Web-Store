@@ -1,9 +1,10 @@
 import { openUserAuthWindow } from "./openUserAuth.js";
 
 const form = document.getElementById("newProduct") as HTMLFormElement;
-
-const modalWindow = document.querySelector('dialog') as HTMLDialogElement;
 const lastIdIndicator = document.getElementById('last-id-indicator') as HTMLHeadElement;
+
+const productExistsErrorWindow = document.getElementById('productAlreadyExistsError') as HTMLDialogElement;
+const invalidValueErrorWindow = document.getElementById('invalidValueError') as HTMLDialogElement;
 
 async function loadNextId() {
     try {
@@ -40,8 +41,12 @@ form.addEventListener("submit", async (b) => {
             }
         )
 
+        const data = await response.json();
+
         if(!response.ok) {
-            openUserAuthWindow()
+            if(data.error.code === "NO_CREDENTIALS") openUserAuthWindow();
+            else if(data.error.code === "PRODUCT_ALREADY_EXISTS") productExistsErrorWindow.showModal();
+            else invalidValueErrorWindow.showModal();
         }
 
         else {
