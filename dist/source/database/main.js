@@ -21,7 +21,7 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products (
     subtype VARCHAR(50),
     amount SMALLINT NOT NULL,
     imagePath VARCHAR(100),
-    isOnline boolean
+    isOnline boolean DEFAULT false
     )`);
 await pool.query(`CREATE TABLE IF NOT EXISTS sales (
     id BIGSERIAL NOT NULL PRIMARY KEY,

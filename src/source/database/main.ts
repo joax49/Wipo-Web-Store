@@ -25,7 +25,7 @@ await pool.query(`CREATE TABLE IF NOT EXISTS products (
     subtype VARCHAR(50),
     amount SMALLINT NOT NULL,
     imagePath VARCHAR(100),
-    isOnline boolean
+    isOnline boolean DEFAULT false
     )`);
 
 await pool.query(`CREATE TABLE IF NOT EXISTS sales (
@@ -34,4 +34,4 @@ await pool.query(`CREATE TABLE IF NOT EXISTS sales (
     amount INT NOT NULL,
     price INT NOT NULL,
     date DATE
-    )`)
+    )`);

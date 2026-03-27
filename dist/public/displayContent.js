@@ -57,6 +57,12 @@ async function fillDisplay(page, filter) {
             elementAmount.textContent = "Cantidad: " + element.amount;
             const elementId = document.createElement('p');
             elementId.textContent = "Id: " + element.id;
+            const elementIsOnline = document.createElement('p');
+            if (element.isonline) {
+                elementIsOnline.textContent = "Ubicación: Mercado Libre";
+            }
+            else
+                elementIsOnline.textContent = "Ubicación: Wipo";
             const elementImage = document.createElement('div');
             elementImage.classList.add("product-images");
             elementImage.innerHTML = `<img src="http://localhost:3000/images/${element.imagepath}" alt="No image available">`;
@@ -73,6 +79,7 @@ async function fillDisplay(page, filter) {
             gridItem.append(elementSubtype);
             gridItem.append(elementAmount);
             gridItem.append(elementId);
+            gridItem.append(elementIsOnline);
             gridItem.append(addToCartButton);
             // //Inserting the rows into the fragment
             fragment.append(gridItem);

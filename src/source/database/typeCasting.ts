@@ -7,6 +7,7 @@ export type Product = {
     subtype: string;
     amount: number;
     imagePath: string;
+    isonline: boolean;
 }
 
 

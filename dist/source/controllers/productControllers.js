@@ -20,6 +20,7 @@ export async function getProductsController(req, res, next) {
             allProducts = allProducts.filter(product => product.type.toLowerCase().includes(searchedType.toLowerCase()));
         if (typeof searchedSubtype === "string")
             allProducts = allProducts.filter(product => product.subtype.toLowerCase().includes(searchedSubtype.toLowerCase()));
+        console.log(allProducts[0].isonline);
         return res.status(200).send(allProducts);
     }
     catch (err) {

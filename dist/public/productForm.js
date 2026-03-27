@@ -13,7 +13,7 @@ async function loadNextId() {
         }
         else {
             const id = await response.json();
-            lastIdIndicator.innerText = "Ultimo id:" + id.id.toString();
+            lastIdIndicator.innerText = "Ultimo id: " + id.id.toString();
         }
     }
     catch (err) {
