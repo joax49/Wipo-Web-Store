@@ -8,7 +8,7 @@ export async function postProductsController(req, res, next) {
                 throw new AppError("NO_CREDENTIALS", "Must provide access token", 401);
             }
             //Getting the product data from the request
-            const { productName, productPrice, productType, productSubtype, productAmount } = req.body;
+            const { productName, productPrice, productType, productSubtype, productAmount, isOnline } = req.body;
             const image = req.file;
             //If the product name is invalid, an error will be returned in the response
             if (typeof productName !== "string") {
@@ -26,7 +26,7 @@ export async function postProductsController(req, res, next) {
             if (isNaN(productPriceAsNumber) || isNaN(productAmountAsNumber)) {
                 throw new AppError("INVALID_NUMBER", "Price and amount must be numbers", 406);
             }
-            insertProduct(productName.trim(), productPrice, productType?.trim(), productSubtype?.trim(), productAmount, image ? image.originalname : null);
+            insertProduct(productName.trim(), productPrice, productType?.trim(), productSubtype?.trim(), productAmount, image ? image.originalname : null, isOnline);
             res.status(201).json({
                 success: true,
                 code: "PRODUCT_CREATED"

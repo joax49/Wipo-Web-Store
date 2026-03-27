@@ -17,7 +17,7 @@ export async function postProductsController(req: Request, res: Response, next: 
         }
 
         //Getting the product data from the request
-        const {productName, productPrice, productType, productSubtype, productAmount} = req.body;
+        const {productName, productPrice, productType, productSubtype, productAmount, isOnline} = req.body;
         const image = req.file;
 
         //If the product name is invalid, an error will be returned in the response
@@ -52,7 +52,7 @@ export async function postProductsController(req: Request, res: Response, next: 
             );
         }
         
-        insertProduct(productName.trim(), productPrice, productType?.trim(), productSubtype?.trim(), productAmount, image ? image.originalname : null);
+        insertProduct(productName.trim(), productPrice, productType?.trim(), productSubtype?.trim(), productAmount, image ? image.originalname : null, isOnline);
         res.status(201).json({
             success: true,
             code: "PRODUCT_CREATED"
